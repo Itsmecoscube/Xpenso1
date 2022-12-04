@@ -10,6 +10,7 @@
           <td bgcolor="#AEF28A" width="22%"> <font face="Arial">Mode of Payment</font> </td> 
           <td bgcolor="#AEF28A"> <font face="Arial">Date</font> </td> 
           <td bgcolor="#AEF28A"> <font face="Arial">Time</font> </td> 
+          <td bgcolor="#AEF28A"> <font face="Arial">Category</font> </td> 
           <td bgcolor="#AEF28A"> <font face="Arial">Type</font> </td> 
       </tr>';
 
@@ -22,6 +23,7 @@
                         $field5name = $row["Amount"];
                         $field6name = $row["time"];
                         $field6name = date("h:m:s a",strtotime($field6name));
+                        $field7name = $row["category"];
                         if($field4name == 'Debit'){
                         echo '<tr> 
                   <td>' . $field1name . '</td> 
@@ -29,6 +31,7 @@
                   <td>' . $field2name . '</td> 
                   <td>' . $field3name . '</td> 
                   <td>' . $field6name . '</td> 
+                  <td>' . $field7name . '</td> 
                   <td bgcolor="#FF2A00">' . $field4name . '</td>  
               </tr>';
             }
@@ -39,6 +42,7 @@
           <td>' . $field2name . '</td> 
           <td>' . $field3name . '</td> 
           <td>' . $field6name . '</td> 
+          <td>' . $field7name . '</td> 
           <td bgcolor="#77D500">' . $field4name . '</td> 
       </tr>';
     }

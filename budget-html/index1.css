@@ -1,3 +1,21 @@
+.add-budget{
+  position: relative;
+  width: 200px; 
+  height:40px;
+  margin: auto;
+}
+.button{
+  appearance:unset;
+}
+.add-budget-button{
+  position: relative;
+  background-color: #4ad400;
+  width: 200px; 
+  height:40px;
+  font-weight: 700;
+  font-size: large;
+  align-self: center;
+}
 .body {
   margin-top: 0px;
   margin-left: 0px;
@@ -218,22 +236,7 @@ position: fixed;
 left: -20px;
 bottom: -10px;
 }
-.add-transaction{
-  position: relative;
-  width: 200px; 
-  height:40px;
-  margin: auto;
-}
-.add-transaction-button{
-  background-color: #4ad400;
-  width: 200px; 
-  height:40px;
-  font-weight: 700;
-  font-size: large;
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  
-  align-self: center;
-}
+
 .transaction-table{
   position: relative;
 }

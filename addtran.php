@@ -28,8 +28,9 @@
                     <option value="GPay"></option>
                     <option value="Card"></option>
                 </datalist>
-
-                <br/><br/>
+                <br><br>
+                <span style ="font-weight: 600;">Category</span><br><input type="text" placeholder="'ALL' for a General budget" id = "category" name="category"><br><br>
+                
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
@@ -40,7 +41,7 @@ window.addEventListener("load", function(){
         function open(event){
             document.querySelector(".popup").style.display = "block";
         },
-        100 
+        0 
     )
 });
 

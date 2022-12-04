@@ -1,5 +1,5 @@
 <html>
-<title>Transactions</title>
+<title>Budget</title>
 <link rel="icon" href="../public/playground_assets/Logo.png" type="image/x-icon">
 
 <head>
@@ -29,18 +29,21 @@
                     <p><?= $var ?></p>
                 </div>
             </div>
+            
             <div class="Progress">
-                <span class="">Progress</span>
+                <span>Progress</span>
             </div>
             <div class="Reminders">
                 <span>Reminders</span>
             </div>
 
-            <div class="add-transaction">
-                <a href="../addtran.php"><button type="button" class="add-transaction-button">
-                        <i class="fa-solid fa-plus"></i> Add Transaction
+            <div class="add-budget">
+                <a href="../addbudget.php"><button type="button" class="add-budget-button">
+                        <i class="fa-solid fa-plus"></i> Add Budget
                     </button></a>
+                    
             </div>
+            
         </div>
 
         <!-- Left Division-->
@@ -66,6 +69,7 @@
                             </span></button></a></span>
                 <span class="reminders-page-text6"><a href="../educate-html/index1.php"><button class="menu-button1"><span class="menutext">Educate</span></button></a></span>
                 <span class="reminders-page-text7"><a href="../help-html/index1.php"><button class="menu-button1"><span class="menutext">Help</span></button></a></span>
+                <div style="position: relative; top:620px; left:20px;"><a href="../register.php"><span style="color: red; font-size: 20; ">Log Out</span></a></div>
             </div>
         </div>
         <div class="searchbar">
@@ -77,32 +81,10 @@
         <!-- Mid Division-->
         <div class="reminders-page-middle">
 
-            <h1>Transactions</h1>
-            <div>
-                <table width="75%" border="0" cellpadding="6" class="transaction-table">
-                    <th class="transaction-header">LAST MONTH</th>
-                    <th class="transaction-header">THIS MONTH</th>
-                    <th class="transaction-header">FUTURE </th>
-                    <tr align="center">
-                        <td class="transaction-data">Inflow</td>
-                        <td class="transaction-data"></td>
-                        <td class="transaction-data" style="color: green;">$14000</td>
-                    </tr>
-                    <tr align="center">
-                        <td class="transaction-data">Outflow</td>
-                        <td></td>
-                        <td class="transaction-data" style="color: red;">$8000</td>
-                    </tr>
-                    <tr align="center">
-                        <td class="transaction-data">Available</td>
-                        <td></td>
-                        <td class="transaction-data" style="color:darkgoldenrod">$6000</td>
-                    </tr>
-                </table>
-                
-            </div>
+            <h1>Budget</h1>
             <div class="transactions-table">
-                <?php include 'print-transactions.php'; ?>
+            <?php include 'print-budget.php'; ?>
+                <!--- PRINT BUDGET TABLE --->
                 </div>
                 <!--
             <div style="margin:auto;">
