@@ -40,7 +40,7 @@
 .reminders-page-middle {
   width: 60%;
   margin: auto;
-  position: relative; 
+  position: relative;
 }
 .reminders-page-left-menu {
   color: rgba(133, 135, 153, 1);
@@ -152,6 +152,7 @@
 }
 .transaction-table {
   border-radius: 20px;
+  margin:auto;
   background-color: lightgrey;
 }
 .profile {
@@ -187,8 +188,8 @@
   font-family: Inter;
   font-weight: 800;
   position: relative;
-  top: 50px;
   margin-left: 15px;
+  height: 250px;
 }
 .Reminders {
   color: rgb(0, 0, 0);
@@ -197,8 +198,8 @@
   font-family: Inter;
   font-weight: 800;
   position: relative;
-  top: 200px;
   margin-left: 15px;
+  height: 250px;
 }
 
 #myProgress {
@@ -216,4 +217,23 @@
 position: fixed;
 left: -20px;
 bottom: -10px;
+}
+.add-transaction{
+  position: relative;
+  width: 200px; 
+  height:40px;
+  margin: auto;
+}
+.add-transaction-button{
+  background-color: #4ad400;
+  width: 200px; 
+  height:40px;
+  font-weight: 700;
+  font-size: large;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  
+  align-self: center;
+}
+.transaction-table{
+  position: relative;
 }
