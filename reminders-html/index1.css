@@ -1,4 +1,5 @@
 .body {
+  margin-top: 0px;
   margin-left: 0px;
   margin-right: 0px;
   margin-bottom: 0px;
@@ -30,7 +31,6 @@
   right: -80px;
 }
 .reminders-page-left {
-  background-color: white;
   width: 20%;
   float: left;
   margin-left: 60px;
@@ -40,7 +40,7 @@
 .reminders-page-middle {
   width: 60%;
   margin: auto;
-  position: relative;
+  position: relative; 
 }
 .reminders-page-left-menu {
   color: rgba(133, 135, 153, 1);
@@ -200,9 +200,20 @@
   top: 200px;
   margin-left: 15px;
 }
-.decor-ellipse1 {
-  position: fixed;
+
+#myProgress {
+  width: 100%;
+  background-color: grey;
 }
-.decor-ellipse2 {
-  position: fixed;
+
+#myBar {
+  width: 1%;
+  height: 30px;
+  background-color: green;
+}
+
+.ellipse-1{
+position: fixed;
+left: -20px;
+bottom: -10px;
 }
