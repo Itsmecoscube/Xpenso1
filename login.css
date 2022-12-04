@@ -1,5 +1,5 @@
 body {
-    background: #91a716;
+    background: #c8c8c8;
 
     display: flex;
 
@@ -24,7 +24,7 @@ form {
 
     padding: 20px;
 
-    background: rgb(85, 54, 54);
+    background: rgb(164, 135, 135);
 
     border-radius: 20px;
 }
