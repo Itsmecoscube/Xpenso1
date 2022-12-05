@@ -57,7 +57,7 @@
 
             </div>
             <div class="reminders-page-left-menu">
-                <span class="reminders-page-text1"><a href="../transactions-html/index1.php"><button class="menu-button1"><span class="menutext">Transactions</span></button></a></span>
+                <span class="reminders-page-text1"><a href="../transactions-html/index1.php"><button class="menu-button1" style="background-color:#ff5b38;"><span class="menutext">Transactions</span></button></a></span>
                 <span class="reminders-page-text2"><a href="../budget-html/index1.php"><button class="menu-button1"><span class="menutext">Budgets</span></button></a></span>
                 <span class="reminders-page-text3"><a href="../report-html/index1.php"><button class="menu-button1"><span class="menutext">Report</span></button></a></span>
                 <span class="reminders-page-text4"><a href="../activities-html/index1.php"><button class="menu-button1"><span class="menutext">Activities</span></button></a></span>
@@ -83,13 +83,12 @@
             <div class="transactions-table">
                 <?php include 'print-transactions.php'; ?>
                 </div>
-                <!--
+                <!-- <h2>Chart:</h2>
             <div style="margin:auto;">
                     <canvas id="myChart" style="width:100%; max-width:600px; margin:auto;"></canvas>
                     <script src="piechart.js"></script>
-                </div>
--->
-        </div>
+</div>
+        </div> -->
     </div>
 </body>
 

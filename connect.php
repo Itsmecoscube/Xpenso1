@@ -24,18 +24,19 @@ if ($mysqli->connect_error) {
     $stmt->execute();
     $stmt->close();
 
-    $query = "SELECT BID,Total_amount,Spent_amount from budget where category='$category'";
+    $query = "SELECT BID,Total_amount,Spent_amount from budget join keeps on BID=Budget_ID where category='$category' and Emailkeeps='$email' ";
     $result = $mysqli->query($query);
     if ($row = $result->fetch_assoc()) {
         $spent_amount = $row['Spent_amount'];
         $total_amount = $row['Total_amount'];
+        $BID = $row['BID'];
         if ($type == 'Credit') {
             $total_amount += $amount;
-            $stmt2 = $mysqli->prepare("update budget set total_amount=$total_amount where category='$category'");
+            $stmt2 = $mysqli->prepare("update budget set total_amount=$total_amount where category='$category' and BID='$BID'");
         }
         else {
             $spent_amount += $amount;
-            $stmt2 = $mysqli->prepare("update budget set spent_amount=$spent_amount where category='$category'");
+            $stmt2 = $mysqli->prepare("update budget set spent_amount=$spent_amount where category='$category' and BID='$BID'");
         }
         $stmt2->execute();
         $stmt2->close();

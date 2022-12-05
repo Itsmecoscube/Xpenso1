@@ -1,5 +1,5 @@
 <html>
-<title>Transactions</title>
+<title>Xpenso | Educate</title>
 <link rel="icon" href="../public/playground_assets/Logo.png" type="image/x-icon">
 
 <head>
@@ -64,7 +64,7 @@
                 <span class="reminders-page-text5"><a href="../reminders-html/index1.php"><button class="menu-button1"><span class="menutext">
                                 <x>Reminders<x>
                             </span></button></a></span>
-                <span class="reminders-page-text6"><a href="../educate-html/index1.php"><button class="menu-button1"><span class="menutext">Educate</span></button></a></span>
+                <span class="reminders-page-text6"><a href="../educate-html/index1.php"><button class="menu-button1" style="background-color:#ff5b38;"><span class="menutext">Educate</span></button></a></span>
                 <span class="reminders-page-text7"><a href="../help-html/index1.php"><button class="menu-button1"><span class="menutext">Help</span></button></a></span>
             </div>
         </div>
@@ -77,7 +77,7 @@
         <!-- Mid Division-->
         <div class="reminders-page-middle">
 
-            <h1>Transactions</h1>
+            <h1>Educate</h1>
             <div>
                 <table width="75%" border="0" cellpadding="6" class="transaction-table">
                     <th class="transaction-header">LAST MONTH</th>

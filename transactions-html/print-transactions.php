@@ -3,7 +3,7 @@
                 $var = $_SESSION['user_name'];
                 $query = "SELECT * FROM transaction join performs on TID = Transaction_ID where Emailperforms = '$var'";
 
-                echo '<table border="5" cellspacing="2" cellpadding="2" width = "70%" margin:auto> 
+                echo '<table border="5" cellspacing="2" cellpadding="2" width = "70%" margin="auto"> 
       <tr height="60px"> 
           <td bgcolor="#AEF28A" > <font face="Arial">Transaction ID</font> </td> 
           <td bgcolor="#AEF28A" width="20%"> <font face="Arial">Amount</font> </td> 
