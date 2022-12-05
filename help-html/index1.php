@@ -91,7 +91,7 @@
                             </span></button></a></span>
                 <span class="reminders-page-text6"><a href="../educate-html/index1.php"><button
                             class="menu-button1"><span class="menutext">Educate</span></button></a></span>
-                <span class="reminders-page-text7"><a href="../help-html/index1.php"><button class="menu-button1"><span
+                <span class="reminders-page-text7"><a href="../help-html/index1.php"><button class="menu-button1" style="background-color:#ff5b38;"><span
                                 class="menutext">Help</span></button></a></span>
                                 <div style="position: relative; top:620px; left:20px;"><a href="../register.php"><span style="color: red; font-size: 20; ">Log Out</span></a></div>
             </div>
@@ -122,7 +122,7 @@
                                 </div>
                             </div>
                         </a>
-                        <div class="collapse" id="faq-17" style="">
+                        <div class="collapse" id="faq-17">
                             <div class="card card-body border-0 p-0">
                                 <p>In the menu bar, click on the 'Transactions' panel and in the bottom right corner,
                                     click on 'Add Transaction'
@@ -144,7 +144,7 @@
                                 </div>
                             </div>
                         </a>
-                        <div class="collapse" id="faq-18" style="">
+                        <div class="collapse" id="faq-18">
                             <div class="card card-body border-0 p-0">
                                 <p>In the menu bar, click on the 'Budget' panel and in the bottom right corner,
                                     click on 'Add Budget'
@@ -164,7 +164,7 @@
                                 </div>
                             </div>
                         </a>
-                        <div class="collapse" id="faq-19" style="">
+                        <div class="collapse" id="faq-19">
                             <div class="card card-body border-0 p-0">
                                 <p>The purpose of XpensO is to give you the convenience of tracking
                                     your daily expenses and keeping a monthly budget which is analyzed to

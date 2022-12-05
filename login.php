@@ -3,7 +3,8 @@
 <html>
 
 <head>
-    <title>LOGIN</title>
+    <title>Xpenso | Log In</title>
+    <link rel="icon" href="public/playground_assets/Logo.png" type="image/x-icon">
 
     <link rel="stylesheet" type="text/css" href="login.css" />
 </head>
