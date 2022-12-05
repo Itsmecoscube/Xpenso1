@@ -1,5 +1,5 @@
 <html>
-<title>Transactions</title>
+<title>Xpenso | Transactions</title>
 <link rel="icon" href="../public/playground_assets/Logo.png" type="image/x-icon">
 
 <head>

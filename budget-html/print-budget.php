@@ -25,7 +25,7 @@ if ($result = $mysqli->query($query)) {
                   
         if ($field2name < $field3name)
             echo '<td bgcolor="red">' . "Rs. " . $field3name . '</td> ';
-        else if (($field3name > ((8 / 10) * $field2name)) && ($field3name < $field2name))
+        else if (($field3name > ((8 / 10) * $field2name)) && ($field3name <= $field2name))
             echo '<td bgcolor="#FFA600">' . "Rs. " . $field3name . '</td> ';
         else
             echo '<td bgcolor="#8EFF00">' . "Rs. " . $field3name . '</td> ';
