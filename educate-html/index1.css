@@ -237,3 +237,61 @@ bottom: -10px;
 .transaction-table{
   position: relative;
 }
+.yt1 {
+  position: relative;
+  left: 50px;
+
+}
+
+.yt2{
+  position: relative;
+  left: 100px;
+  
+}
+.yt3 {
+  position: relative;
+  left: 250px;
+  top: 50px;
+  
+}
+
+.pod1 {
+  position: relative;
+  left: 25px;
+
+}
+.pod2 {
+  position: relative;
+  left: 50px;
+
+}
+.pod3 {
+  position: relative;
+  left: 75px;
+
+}
+
+.port1 {
+  position: relative;
+  left: 25px;
+
+}
+.port2 {
+  position: relative;
+  left: 50px;
+}
+
+.blog1 {
+  position: relative;
+  left: 25px;
+
+}
+.blog2 {
+  position: relative;
+  left: 50px;
+
+}
+.blog3 {
+  position: relative;
+  left: 75px;
+}

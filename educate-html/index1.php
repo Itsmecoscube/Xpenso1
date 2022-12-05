@@ -76,42 +76,36 @@
         </div>
         <!-- Mid Division-->
         <div class="reminders-page-middle">
+                    
+                    <h1>Educate</h1>
+                <div class="youtube-links">
+                    <h1> Youtube Videos</h1>
+                    <span class="yt1"><a target="_blank" href="https://www.youtube.com/watch?v=ndOjIPBXC_k"><img src = "C:\Users\user\Desktop\Web Dev\XpensO\Xpenso1\public\playground_assets\sharan.png" alt="Finance with Sharan"></a></span>
+                    <span class="yt2"><a target="_blank" href="https://www.youtube.com/watch?v=uYNfT6B2Hqg"><img src = "C:\Users\user\Desktop\Web Dev\XpensO\Xpenso1\public\playground_assets\ankur.png" alt="Ankur Warikoo"></a></span>
+                    <span class="yt3"><a target="_blank" href="https://www.youtube.com/watch?v=0XYB7aiD20c"><img src = "C:\Users\user\Desktop\Web Dev\XpensO\Xpenso1\public\playground_assets\rachana.png" alt="Rachana Ranade"></a></span>
+                </div>  <br><br><br><br><br>
 
-            <h1>Educate</h1>
-            <div>
-                <table width="75%" border="0" cellpadding="6" class="transaction-table">
-                    <th class="transaction-header">LAST MONTH</th>
-                    <th class="transaction-header">THIS MONTH</th>
-                    <th class="transaction-header">FUTURE </th>
-                    <tr align="center">
-                        <td class="transaction-data">Inflow</td>
-                        <td class="transaction-data"></td>
-                        <td class="transaction-data" style="color: green;">$14000</td>
-                    </tr>
-                    <tr align="center">
-                        <td class="transaction-data">Outflow</td>
-                        <td></td>
-                        <td class="transaction-data" style="color: red;">$8000</td>
-                    </tr>
-                    <tr align="center">
-                        <td class="transaction-data">Available</td>
-                        <td></td>
-                        <td class="transaction-data" style="color:darkgoldenrod">$6000</td>
-                    </tr>
-                </table>
-                
-            </div>
-            <div class="transactions-table">
-                <?php include 'print-transactions.php'; ?>
+                <div class="podcasts">
+                    <h1>Podcasts on Spotify</h1>
+                    <span class="pod1"><a target="_blank" href="https://open.spotify.com/show/7dnn22EWyo6MLsPaR492BM?si=0908119baf3945d0"><img src = "C:\Users\user\Desktop\Web Dev\XpensO\Xpenso1\public\playground_assets\spotify1.png" alt="Millenial Investing"></a></span>
+                    <span class="pod2"><a target="_blank" href="https://open.spotify.com/show/12jUp5Aa63c5BYx3wVZeMA?si=68c8d2ead0a84741"><img src = "C:\Users\user\Desktop\Web Dev\XpensO\Xpenso1\public\playground_assets\spotify2.png" alt="Finshots Daily"></a></span>
+                    <span class="pod3"><a target="_blank" href="https://open.spotify.com/show/3nSdkNgBMvMJUZfDwU7aeZ?si=fe5d67cd718f43dc"><img src = "C:\Users\user\Desktop\Web Dev\XpensO\Xpenso1\public\playground_assets\spotify3.png" alt="India FinTech"></a></span>
+                </div>  <br><br><br>
+
+                <div class="portals">
+                    <h1>Online Websites to checkout</h1>
+                    <span class="port1"><a target="_blank" href="https://zerodha.com/varsity/"><img src = "C:\Users\user\Desktop\Web Dev\XpensO\Xpenso1\public\playground_assets\zerodha.png" alt="Zerodha Varsity"></a></span>
+                    <span class="port2"><a target="_blank" href="https://finshots.in/"><img src = "C:\Users\user\Desktop\Web Dev\XpensO\Xpenso1\public\playground_assets\finshots.png" alt="Finshots"></a></span>
+                </div>  <br><br><br>
+
+                <div class="Blogs">
+                    <h1>Blogs and News</h1>
+                    <span class="blog1"><a target="_blank" href="https://www.jagoinvestor.com/"><img src = "C:\Users\user\Desktop\Web Dev\XpensO\Xpenso1\public\playground_assets\jagoinvestor.png" alt="JagoInvestor"></a></span>
+                    <span class="blog2"><a target="_blank" href="https://www.moneycontrol.com/"><img src = "C:\Users\user\Desktop\Web Dev\XpensO\Xpenso1\public\playground_assets\moneycontrol.png" alt="MoneyControl"></a></span>
+                    <span class="blog3"><a target="_blank" href="https://www.cashoverflow.in/"><img src = "C:\Users\user\Desktop\Web Dev\XpensO\Xpenso1\public\playground_assets\cashoverflow.png" alt="CashOverflow"></a></span>
+                </div>  <br><br><br>
+
                 </div>
-                <!--
-            <div style="margin:auto;">
-                    <canvas id="myChart" style="width:100%; max-width:600px; margin:auto;"></canvas>
-                    <script src="piechart.js"></script>
-                </div>
--->
-        </div>
-    </div>
 </body>
 
 </html>
