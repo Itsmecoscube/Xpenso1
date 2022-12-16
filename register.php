@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    <form action="registerpost.php" method = "post">
+    <form action="registerpost.php" method = "post" enctype="multipart/form-data">
         <div class="container">
           <h1>Register</h1>
           <p>Please fill in this form to create an account.</p>
@@ -31,9 +31,14 @@
           <label for="age"><b>Age</b></label>
           <input type="number" placeholder="Enter Age" name="age" id="age" required>
           <hr>
+          
+          <label for="photo"><b>Profile Photo</b></label><br>
+          <input type="file" name="photo" id="photo" required>
+          <hr>
+
       
           <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-          <button type="submit" class="registerbtn">Register</button>
+          <button type="submit" class="registerbtn" value="Upload">Register</button>
         </div>
       
         <div class="container signin">

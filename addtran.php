@@ -14,23 +14,28 @@
                 <span style ="font-weight: 600;">Amount</span><br><input type="number" placeholder="Amount" id = "amount" name="amount"><br>
                 
                 <br><span style ="font-weight: 600;">Type of payment</span><br/>
-                <input list="transaction-type" placeholder="Credit/Debit" style = "margin: auto;" id = "transaction-type" name="transaction-type">
-                <datalist id="transaction-type">
-                    <option value="Credit"></option>
-                    <option value="Debit"></option>
-                </datalist>
+                <select id="transaction-type" name="transaction-type">\
+                <option value="Debit">Debit</option>
+                    <option value="Credit">Credit</option>
+                    
+</select>
                 <br/>
 
                 <br><span style ="font-weight: 600;">Type of payment</span><br/>
-                <input list="mode-of-payment" placeholder="Cash/GPay/Card" style = "margin: auto;" id = "mode-of-payment" name="mode-of-payment">
-                <datalist id="mode-of-payment">
-                    <option value="Cash"></option>
-                    <option value="GPay"></option>
-                    <option value="Card"></option>
-                </datalist>
+                <select id="mode-of-payment" name="mode-of-payment">
+                    <option value="Cash">Cash</option>
+                    <option value="GPay">Gpay</option>
+                    <option value="Card">Card</option>
+</select>
                 <br><br>
-                <span style ="font-weight: 600;">Category</span><br><input type="text" placeholder="'ALL' for a General budget" id = "category" name="category"><br><br>
-                
+                <span style ="font-weight: 600;">Category</span><br>
+                <select id="category" name="category">
+                    <option value="ALL">ALL</option>
+                    <option value="Transport">Transport</option>
+                    <option value="Food">Food</option>
+                    <
+</select>
+<br><br>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>

@@ -19,16 +19,39 @@
 
         <!-- Right Division-->
         <div class="reminders-page-right">
-            <div class="profile">
-                <img src="../public/playground_assets/profile.png" class="profilephoto">
-                <div class="username">
-                    <?php
-                    session_start();
-                    $var = $_SESSION['name'];
-                    ?>
-                    <p><?= $var ?></p>
-                </div>
-            </div>
+        <div class="profile">
+
+<?php
+session_start();
+$conn = new mysqli('localhost', 'root', '', 'xpenso');
+if ($conn->connect_error) {
+    die('Connection Failed: ' . $conn->connect_error);
+} else {
+    $var = $_SESSION['user_name'];
+    $sql = "SELECT profile_pic_url FROM user where email='$var'";
+    $result = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($result) > 0) {
+        while ($images = mysqli_fetch_assoc($result)) {
+
+
+?>
+<img src="../uploads/<?= $images['profile_pic_url'] ?>" class="profilephoto1" style="width: 50px;">
+
+<?php
+        }
+    }
+}
+?>
+<div class="username">
+    <?php
+
+    $var = $_SESSION['name'];
+    ?>
+    <p>
+        <?= $var ?>
+    </p>
+</div>
+</div>
             
             <div class="Progress">
                 <span>Progress</span>

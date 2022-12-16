@@ -1,5 +1,5 @@
-<html>
-<title>Xpenso | Transactions</title>
+<!DOCTYPE html>
+<title>Xpenso | Report</title>
 <link rel="icon" href="../public/playground_assets/Logo.png" type="image/x-icon">
 
 <head>
@@ -23,33 +23,11 @@
 
         <!-- Right Division-->
         <div class="reminders-page-right">
-
             <div class="profile">
-
-                <?php
-                session_start();
-                $conn = new mysqli('localhost', 'root', '', 'xpenso');
-                if ($conn->connect_error) {
-                    die('Connection Failed: ' . $conn->connect_error);
-                } else {
-                    $var = $_SESSION['user_name'];
-                    $sql = "SELECT profile_pic_url FROM user where email='$var'";
-                    $result = mysqli_query($conn, $sql);
-                    if (mysqli_num_rows($result) > 0) {
-                        while ($images = mysqli_fetch_assoc($result)) {
-
-
-                ?>
-                <img src="../uploads/<?= $images['profile_pic_url'] ?>" class="profilephoto1" style="width: 50px;">
-
-                <?php
-                        }
-                    }
-                }
-                ?>
+                <img src="../public/playground_assets/profile.png" class="profilephoto">
                 <div class="username">
                     <?php
-
+                    session_start();
                     $var = $_SESSION['name'];
                     ?>
                     <p>
@@ -86,12 +64,11 @@
             </div>
             <div class="reminders-page-left-menu">
                 <span class="reminders-page-text1"><a href="../transactions-html/index1.php"><button
-                            class="menu-button1" ><span
-                                class="menutext">Transactions</span></button></a></span>
+                            class="menu-button1"><span class="menutext">Transactions</span></button></a></span>
                 <span class="reminders-page-text2"><a href="../budget-html/index1.php"><button
                             class="menu-button1"><span class="menutext">Budgets</span></button></a></span>
-                <span class="reminders-page-text3"><a href="../report-html/index1.php"><button
-                            class="menu-button1" style="background-color:#65f9c5;"><span class="menutext">Report</span></button></a></span>
+                <span class="reminders-page-text3"><a href="../report-html/index1.php"><button class="menu-button1"
+                            style="background-color:#65f9c5;"><span class="menutext">Report</span></button></a></span>
                 <span class="reminders-page-text4"><a href="../activities-html/index1.php"><button
                             class="menu-button1"><span class="menutext">Activities</span></button></a></span>
                 <span class="reminders-page-text5"><a href="../reminders-html/index1.php"><button
@@ -102,22 +79,18 @@
                             class="menu-button1"><span class="menutext">Educate</span></button></a></span>
                 <span class="reminders-page-text7"><a href="../help-html/index1.php"><button class="menu-button1"><span
                                 class="menutext">Help</span></button></a></span>
-
-                <div style="position: relative; top:620px; left:20px;"><a href="../register.php"><span
-                            style="color: red; font-size: 20; ">Log Out</span></a></div>
             </div>
         </div>
-         <div class="searchbar">
+        <div class="searchbar">
             <form>
-                <input type="text" class="" id="myInput" style="border: 20px;" onkeyup="myFunction()"
-                    placeholder="Search for a Category...">
+                <input type="search" placeholder="  Search" name="search" style="border: 20px;">
             </form>
             <img src="../public/playground_assets/search.svg" class="Searchicon">
         </div>
         <!-- Mid Division-->
-        
         <div class="reminders-page-middle">
-        <h1>Report</h1>
+
+            <h1>Report</h1>
             <?php
             $mysqli = new mysqli('localhost', 'root', '', 'xpenso');
             $var = $_SESSION['user_name'];
@@ -134,7 +107,7 @@
             }
             ?>
             <div style="margin:auto;">
-                <canvas id="myChart" style="width:100%; max-width:600px;"></canvas>
+                <canvas id="myChart" style="width:100%; max-width:600px; margin:auto;"></canvas>
                 <script>
                     var xValues = ["All", "Transport", "Food"];
 
@@ -161,7 +134,6 @@
 
                 </script>
             </div>
-            <br><br>
             <div>
 
                 <canvas id="myChart2" style="width:100%;max-width:600px"></canvas>
@@ -212,7 +184,6 @@
                     });
                 </script>
             </div>
-            
         </div>
     </div>
 </body>
