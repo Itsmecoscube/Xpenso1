@@ -19,16 +19,39 @@
 
         <!-- Right Division-->
         <div class="reminders-page-right">
-            <div class="profile">
-                <img src="../public/playground_assets/profile.png" class="profilephoto">
-                <div class="username">
-                    <?php
-                    session_start();
-                    $var = $_SESSION['name'];
-                    ?>
-                    <p><?= $var ?></p>
-                </div>
-            </div>
+        <div class="profile">
+
+<?php
+session_start();
+$conn = new mysqli('localhost', 'root', '', 'xpenso');
+if ($conn->connect_error) {
+    die('Connection Failed: ' . $conn->connect_error);
+} else {
+    $var = $_SESSION['user_name'];
+    $sql = "SELECT profile_pic_url FROM user where email='$var'";
+    $result = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($result) > 0) {
+        while ($images = mysqli_fetch_assoc($result)) {
+
+
+?>
+<img src="../uploads/<?= $images['profile_pic_url'] ?>" class="profilephoto1" style="width: 50px;">
+
+<?php
+        }
+    }
+}
+?>
+<div class="username">
+    <?php
+
+    $var = $_SESSION['name'];
+    ?>
+    <p>
+        <?= $var ?>
+    </p>
+</div>
+</div>
             
             <div class="Progress">
                 <span>Progress</span>
@@ -61,7 +84,7 @@
             </div>
             <div class="reminders-page-left-menu">
                 <span class="reminders-page-text1"><a href="../transactions-html/index1.php"><button class="menu-button1"><span class="menutext">Transactions</span></button></a></span>
-                <span class="reminders-page-text2"><a href="../budget-html/index1.php"><button class="menu-button1" style="background-color:#ff5b38;"><span class="menutext">Budgets</span></button></a></span>
+                <span class="reminders-page-text2"><a href="../budget-html/index1.php"><button class="menu-button1" style="background-color:#65f9c5;"><span class="menutext">Budgets</span></button></a></span>
                 <span class="reminders-page-text3"><a href="../report-html/index1.php"><button class="menu-button1"><span class="menutext">Report</span></button></a></span>
                 <span class="reminders-page-text4"><a href="../activities-html/index1.php"><button class="menu-button1"><span class="menutext">Activities</span></button></a></span>
                 <span class="reminders-page-text5"><a href="../reminders-html/index1.php"><button class="menu-button1"><span class="menutext">
