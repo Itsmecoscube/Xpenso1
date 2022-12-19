@@ -38,7 +38,7 @@ if ($conn->connect_error) {
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) === 1)
         header('Location: login.php');
-
+    $password = crypt($password,PASSWORD_DEFAULT);
     $stmt = $conn->prepare("insert into user (Email,Name,Mobile_no,Age,PASSWORD,profile_pic_url) values(?,?,?,?,?,?)"); 
     $stmt->bind_param("ssiiss", $email, $name, $mobileno, $age, $password, $new_img_name);
     $stmt->execute();

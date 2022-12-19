@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <html>
 <title>Xpenso | Transactions</title>
 <link rel="icon" href="../public/playground_assets/Logo.png" type="image/x-icon">
@@ -27,7 +28,6 @@
             <div class="profile">
 
                 <?php
-                session_start();
                 $conn = new mysqli('localhost', 'root', '', 'xpenso');
                 if ($conn->connect_error) {
                     die('Connection Failed: ' . $conn->connect_error);
@@ -126,10 +126,15 @@
             if ($result = $mysqli->query($query)) {
                 while ($row = $result->fetch_assoc()) {
                     $category = $row["category"];
-                    $array[$category] = $row;
+                    $array[] = $row;
                 }
                 //IF You add new categories, add it here
-                $reqarray = array($array['ALL']['total_amount'], $array['Transport']['total_amount'], $array['Food']['total_amount']);
+                if(isset($array[2]))
+                $reqarray = array($array[0]['total_amount'], $array[1]['total_amount'], $array[2]['total_amount']);
+                else if(isset($array[1]))
+                $reqarray = array($array[0]['total_amount'], $array[1]['total_amount']);
+                else if(isset($array[0]))
+                $reqarray = array($array[0]['total_amount']);
 
             }
             ?>

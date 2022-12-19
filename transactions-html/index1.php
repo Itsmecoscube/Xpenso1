@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <html>
 <title>Xpenso | Transactions</title>
 <link rel="icon" href="../public/playground_assets/Logo.png" type="image/x-icon">
@@ -27,7 +28,6 @@
             <div class="profile">
 
                 <?php
-                session_start();
                 $conn = new mysqli('localhost', 'root', '', 'xpenso');
                 if ($conn->connect_error) {
                     die('Connection Failed: ' . $conn->connect_error);
