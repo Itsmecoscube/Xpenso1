@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <html>
 <title>Xpenso | Reminders</title>
 <link rel="icon" href="../public/playground_assets/Logo.png" type="image/x-icon">
@@ -23,7 +24,6 @@
                 <img src="../public/playground_assets/profile.png" class="profilephoto">
                 <div class="username">
                     <?php
-                    session_start();
                     $var = $_SESSION['name'];
                     ?>
                     <p><?= $var ?></p>

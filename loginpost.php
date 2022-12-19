@@ -33,7 +33,7 @@ if (isset($_POST['uname']) && isset($_POST['password'])) {
 
     $uname = validate($_POST['uname']);
 
-    $pass = validate($_POST['password']);
+    $pass = $_POST['password'];
 
     if (empty($uname)) {
 
@@ -47,18 +47,16 @@ if (isset($_POST['uname']) && isset($_POST['password'])) {
         exit();
     } else {
 
-        $sql = "SELECT * FROM user WHERE Email='$uname' AND PASSWORD='$pass'";
+        $sql = "SELECT * FROM user WHERE Email='$uname'";
 
         $result = mysqli_query($conn, $sql);
 
         if (mysqli_num_rows($result) === 1) {
 
             $row = mysqli_fetch_assoc($result);
-
-            if ($row['Email'] === $uname && $row['PASSWORD'] === $pass) {
-
-                echo "Logged in!";
-
+            $hash = $row['PASSWORD'];
+            $verify = password_verify($pass, $hash);
+            if ($verify) {
                 $_SESSION['user_name'] = $row['Email'];
                 $_SESSION['mobileno'] = $row['Mobile_no'];
 
@@ -71,13 +69,13 @@ if (isset($_POST['uname']) && isset($_POST['password'])) {
                 exit();
             }else{
 
-                header("Location: login.php?error=Incorect User name or password");
+                header("Location: login.php?error=Incorect User name or password22");
 
                 exit();
             }
         } else {
 
-            header("Location: login.php?error=Incorect User name or password");
+            header("Location: login.php?error=Incorect Email");
 
             exit();
         }
