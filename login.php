@@ -51,7 +51,7 @@ body{
     bottom: -80px;
 }
 form{
-    height: 550px;
+    height: 570px;
     width: 400px;
     background-color: rgba(51, 255, 61, 0.22);
     position: absolute;

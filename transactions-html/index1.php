@@ -142,7 +142,7 @@
 
             <h1>Transactions</h1>
             <div class="transactions-table">
-                <table border="5" cellspacing="2" cellpadding="2" width="70%" margin="auto" id="myTable">
+                <table border="5" cellspacing="2" cellpadding="2" width="70%" margin="auto" id="myTable" style="border:5px solid black; border-radius:10px;">
                     <tr height="60px" class="header">
                         <th bgcolor="#AEF28A">
                             <font face="Arial">Transaction ID</font>

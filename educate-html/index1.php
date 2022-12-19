@@ -78,6 +78,8 @@
                             style="background-color:#65f9c5;"><span class="menutext">Educate</span></button></a></span>
                 <span class="reminders-page-text7"><a href="../help-html/index1.php"><button class="menu-button1"><span
                                 class="menutext">Help</span></button></a></span>
+                                <div style="position: relative; top:620px; left:20px;"><a href="../register.php"><span
+                            style="color: red; font-size: 20; ">Log Out</span></a></div>
             </div>
         </div>
         <div class="searchbar">
