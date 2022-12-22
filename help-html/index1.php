@@ -39,12 +39,31 @@
         <!-- Right Division-->
         <div class="reminders-page-right">
             <div class="profile">
-                <img src="../public/playground_assets/profile.png" class="profilephoto">
+            <?php
+$conn = new mysqli('localhost', 'root', '', 'xpenso');
+if ($conn->connect_error) {
+    die('Connection Failed: ' . $conn->connect_error);
+} else {
+    $var = $_SESSION['user_name'];
+    $sql = "SELECT profile_pic_url FROM user where email='$var'";
+    $result = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($result) > 0) {
+        while ($images = mysqli_fetch_assoc($result)) {
+
+
+?>
+<img src="../uploads/<?= $images['profile_pic_url'] ?>" class="profilephoto1" style="width: 55px; border:solid black;border-radius:25px;position:relative;top:15px;">
+
+<?php
+        }
+    }
+}
+?>
                 <div class="username">
                     <?php
                     $var = $_SESSION['name'];
                     ?>
-                    <p>
+                    <p style="position:relative; top:17px;">
                         <?= $var ?>
                     </p>
                 </div>
@@ -56,11 +75,7 @@
                 <span>Reminders</span>
             </div>
 
-            <div class="add-transaction">
-                <a href="../addtran.php"><button type="button" class="add-transaction-button">
-                        <i class="fa-solid fa-plus"></i> Add Transaction
-                    </button></a>
-            </div>
+            
         </div>
 
         <!-- Left Division-->
@@ -93,12 +108,14 @@
                             class="menu-button1"><span class="menutext">Educate</span></button></a></span>
                 <span class="reminders-page-text7"><a href="../help-html/index1.php"><button class="menu-button1" style="background-color:#65f9c5;"><span
                                 class="menutext">Help</span></button></a></span>
-                                <div style="position: relative; top:620px; left:20px;"><a href="../register.php"><span style="color: red; font-size: 20; ">Log Out</span></a></div>
+                                <span class="reminders-page-text8"><a href="../shopping-html/index1.php"><button class="menu-button1"><span
+                                class="menutext">Shopping List</span></button></a></span>
+                                <div style="position: relative; top:670px; left:20px;"><a href="../register.php"><span style="color: red; font-size: 20; ">Log Out</span></a></div>
             </div>
         </div>
         <div class="searchbar">
             <form>
-                <input type="search" placeholder="  Search" name="search" style="border: 20px;">
+                <input type="search" placeholder="  Search" name="search" style="border: 20px; width:160px;">
             </form>
             <img src="../public/playground_assets/search.svg" class="Searchicon">
         </div>

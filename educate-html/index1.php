@@ -10,11 +10,344 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
         data-tag="font" />
-    <link rel="stylesheet" href="index1.css">
     <script src="https://kit.fontawesome.com/2291efdc8d.js" crossorigin="anonymous"></script>
 
     <!---->
+<style>
+    .body {
+  margin-top: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  background-color: #f5f5fb;
+}
 
+.searchbar {
+  display: flex;
+  max-width: 500px;
+  align-items: left;
+  position: relative;
+  border-color: rgb(135, 158, 178);
+}
+
+.searchbar-input {
+  background-color: white;
+  border-radius: 15px;
+  border-color: rgb(135, 158, 178);
+  align-items: center;
+  width: 100%;
+}
+
+.reminders-page-right {
+  background-color: white;
+  width: 20%;
+  float: right;
+  margin-top: 0px;
+  min-height: 100vh;
+  margin-right: 90;
+  border-radius: 20px;
+  position: fixed;
+  right: -80px;
+}
+
+.reminders-page-left {
+  width: 20%;
+  float: left;
+  margin-left: 60px;
+  margin-top: 10px;
+
+}
+
+.reminders-page-middle {
+  width: 60%;
+  margin: auto;
+  position: relative;
+}
+
+.reminders-page-left-menu {
+  color: rgba(133, 135, 153, 1);
+  width: 82px;
+  height: auto;
+  font-size: 20px;
+  align-self: auto;
+  font-style: Medium;
+  text-align: left;
+  font-family: Inter;
+  font-weight: 500;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+  position: fixed;
+}
+
+.reminders-page-text1 {
+  top: 100px;
+  position: absolute;
+}
+
+.reminders-page-text2 {
+  top: 175px;
+  position: absolute;
+}
+
+.reminders-page-text3 {
+  top: 250px;
+  position: absolute;
+}
+
+.reminders-page-text4 {
+  top: 325px;
+  position: absolute;
+}
+
+.reminders-page-text5 {
+  top: 400px;
+  position: absolute;
+}
+
+.reminders-page-text6 {
+  top: 475px;
+  position: absolute;
+}
+
+.reminders-page-text7 {
+  top: 550px;
+  position: absolute;
+}
+
+.reminders-page-text8 {
+  top: 625px;
+  position: absolute;
+}
+
+.menu-button1 {
+  width: 130px;
+  height: 40px;
+  background-color: #aeff83;
+  border-radius: 10px;
+  border-color: #f5f5fb;
+}
+
+.menutext {
+  color: rgb(55, 56, 62);
+  width: 82px;
+  height: auto;
+  font-size: 17px;
+  align-self: auto;
+  text-align: left;
+  font-family: Inter;
+  font-weight: 600;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+
+.Logo {
+  position: fixed;
+  max-width: 50px;
+  border-radius: 15px;
+}
+
+.brand {
+  position: fixed;
+}
+
+.brand-text1 {
+  color: red;
+}
+
+.brand-text2 {
+  color: purple;
+  position: relative;
+  right: 5;
+}
+
+.brand-text3 {
+  color: green;
+  position: relative;
+  right: 10px;
+}
+
+.brand-text {
+  position: relative;
+  top: 11px;
+  left: 55px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.searchbar input {
+  border-radius: 12px;
+  height: 45px;
+  min-width: 200%;
+  margin-top: 20px;
+}
+
+.transaction-data {
+  border: 0px;
+}
+
+.transaction-header {
+  border-radius: 15px;
+  background-color: #4ad400;
+}
+
+.transaction-table {
+  border-radius: 20px;
+  margin: auto;
+  background-color: lightgrey;
+}
+
+.profile {
+  position: relative;
+  top: 15px;
+  left: 20px;
+}
+
+.searchicon {
+  width: 20px;
+  height: 20px;
+  margin: 0px;
+  position: relative;
+  top: 33px;
+  left: 25%;
+  opacity: 50%;
+}
+
+.x {
+  font-weight: 700;
+  color: rgb(0, 0, 0);
+}
+
+.username {
+  font-weight: 800;
+  font-size: 20;
+  position: relative;
+  top: -40px;
+  left: 70px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.Progress {
+  color: rgb(0, 0, 0);
+  width: 82px;
+  font-size: 18px;
+  font-family: Inter;
+  font-weight: 800;
+  position: relative;
+  margin-left: 15px;
+  height: 250px;
+}
+
+.Reminders {
+  color: rgb(0, 0, 0);
+  width: 82px;
+  font-size: 18px;
+  font-family: Inter;
+  font-weight: 800;
+  position: relative;
+  margin-left: 15px;
+  height: 250px;
+}
+
+#myProgress {
+  width: 100%;
+  background-color: grey;
+}
+
+#myBar {
+  width: 1%;
+  height: 30px;
+  background-color: green;
+}
+
+.ellipse-1 {
+  position: fixed;
+  left: -20px;
+  bottom: -10px;
+}
+
+.add-transaction {
+  position: relative;
+  width: 200px;
+  height: 40px;
+  margin: auto;
+}
+
+.add-transaction-button {
+  background-color: #4ad400;
+  width: 200px;
+  height: 40px;
+  font-weight: 700;
+  font-size: large;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+  align-self: center;
+}
+
+.transaction-table {
+  position: relative;
+}
+
+.yt1 {
+  position: relative;
+  left: 10px;
+
+}
+
+.yt2 {
+  position: relative;
+  left: 50px;
+
+}
+
+
+.pod1 {
+  position: relative;
+  left: 25px;
+
+}
+
+.pod2 {
+  position: relative;
+  left: 50px;
+
+}
+
+.pod3 {
+  position: relative;
+  left: 75px;
+
+}
+
+.port1 {
+  position: relative;
+  left: 25px;
+
+}
+
+.port2 {
+  position: relative;
+  left: 50px;
+}
+
+.blog1 {
+  position: relative;
+  left: 25px;
+
+}
+
+.blog2 {
+  position: relative;
+  left: 50px;
+
+}
+
+.blog3 {
+  position: relative;
+  left: 75px;
+}
+    </style>
 </head>
 
 <body class="body">
@@ -24,7 +357,26 @@
         <!-- Right Division-->
         <div class="reminders-page-right">
             <div class="profile">
-                <img src="../public/playground_assets/profile.png" class="profilephoto">
+            <?php
+$conn = new mysqli('localhost', 'root', '', 'xpenso');
+if ($conn->connect_error) {
+    die('Connection Failed: ' . $conn->connect_error);
+} else {
+    $var = $_SESSION['user_name'];
+    $sql = "SELECT profile_pic_url FROM user where email='$var'";
+    $result = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($result) > 0) {
+        while ($images = mysqli_fetch_assoc($result)) {
+
+
+?>
+<img src="../uploads/<?= $images['profile_pic_url'] ?>" class="profilephoto1" style="width: 50px; border:solid black;border-radius:25px;position:relative;top:15px;">
+
+<?php
+        }
+    }
+}
+?>
                 <div class="username">
                     <?php
                     $var = $_SESSION['name'];
@@ -78,11 +430,15 @@
                             style="background-color:#65f9c5;"><span class="menutext">Educate</span></button></a></span>
                 <span class="reminders-page-text7"><a href="../help-html/index1.php"><button class="menu-button1"><span
                                 class="menutext">Help</span></button></a></span>
+                                <span class="reminders-page-text8"><a href="../shopping-html/index1.php"><button class="menu-button1"><span
+                                class="menutext">Shopping List</span></button></a></span>
+                                <div style="position: relative; top:670px; left:20px;"><a href="../register.php"><span
+                            style="color: red; font-size: 20; ">Log Out</span></a></div>
             </div>
         </div>
         <div class="searchbar">
             <form>
-                <input type="search" placeholder="  Search" name="search" style="border: 20px;">
+                <input type="search" placeholder="  Search" name="search" style="border: 20px;width:160px;">
             </form>
             <img src="../public/playground_assets/search.svg" class="Searchicon">
         </div>
@@ -96,8 +452,6 @@
                             src="../public/playground_assets/sharan.png" alt="Finance with Sharan"></a></span>
                 <span class="yt2"><a target="_blank" href="https://www.youtube.com/watch?v=uYNfT6B2Hqg"><img
                             src="../public/playground_assets/ankur.png" alt="Ankur Warikoo"></a></span>
-                <span class="yt3"><a target="_blank" href="https://www.youtube.com/watch?v=0XYB7aiD20c"><img
-                            src="../public/playground_assets/rachana.png" alt="Rachana Ranade"></a></span>
             </div> <br><br><br><br><br>
 
             <div class="podcasts">

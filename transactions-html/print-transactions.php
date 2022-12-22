@@ -22,13 +22,12 @@ if ($result = $mysqli->query($query)) {
                   <td>' . $field7name . '</td> ';
         if ($field4name == 'Debit') {
             echo '
-                  <td bgcolor="#FF2A00">' . $field4name . '</td>  
-              </tr>';
+                  <td bgcolor="#FF2A00">' . $field4name . '</td>';
         } else {
             echo '
-          <td bgcolor="#77D500">' . $field4name . '</td> 
-      </tr>';
+          <td bgcolor="#77D500">' . $field4name . '</td>';
         }
+        echo '</tr>';
     }
     $result->free();
 }

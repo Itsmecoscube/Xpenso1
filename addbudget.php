@@ -12,7 +12,18 @@
             <br/>
             <form action = "budgetconnect.php" method="post">
                 <span style ="font-weight: 600;">Amount</span><br><input type="number" placeholder="Amount" id = "amount" name="amount"><br><br>
-                <span style ="font-weight: 600;">Category</span><br><input type="text" placeholder="'ALL' for a General budget" id = "category" name="category"><br><br>
+                <span style ="font-weight: 600;">Category</span><br>
+                <select id="category" name="category">
+                    <option value="General">General</option>
+                    <option value="Transport">Transport</option>
+                    <option value="Food">Food</option>
+                    <option value="Shopping">Shopping</option>
+                    <option value="Rent">Rent</option>
+                    <option value="Petrol">Petrol</option>
+                    <option value="Medicine">Medicine</option>
+                    <option value="Entertainment">Entertainment</option>
+</select>
+                <br><br>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>

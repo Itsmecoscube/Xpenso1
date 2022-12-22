@@ -3,7 +3,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'xpenso');
 $var = $_SESSION['user_name'];
 $query = "SELECT * FROM budget join keeps on BID = Budget_ID where Emailkeeps = '$var'";
 
-echo '<table border="5" cellspacing="2" cellpadding="2" width = "70%" margin:auto> 
+echo '<table border="5" cellspacing="2" cellpadding="2" width = "70%" margin:auto style="border:5px solid black; border-radius:10px;"> 
       <tr height="60px"> 
           <td bgcolor="#AEF28A" > <font face="Arial">Budget ID</font> </td> 
           <td bgcolor="#AEF28A" width="20%"> <font face="Arial">Total Amount</font> </td> 

@@ -37,7 +37,7 @@ if (isset($_POST['uname']) && isset($_POST['password'])) {
 
     if (empty($uname)) {
 
-        header("Location: login.php?error=User Name is required");
+        header("Location: login.php?error=Email is required");
 
         exit();
     } else if (empty($pass)) {
@@ -64,12 +64,12 @@ if (isset($_POST['uname']) && isset($_POST['password'])) {
 
                 $_SESSION['id'] = $row['Email'];
 
-                header("Location: transactions-html/index1.php");
+                header("Location: checkotp.php");
 
                 exit();
             }else{
 
-                header("Location: login.php?error=Incorect User name or password22");
+                header("Location: login.php?error=Incorect Email or password22");
 
                 exit();
             }

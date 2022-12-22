@@ -40,7 +40,7 @@
 
 
                 ?>
-                <img src="../uploads/<?= $images['profile_pic_url'] ?>" class="profilephoto1" style="width: 50px;">
+                <img src="../uploads/<?= $images['profile_pic_url'] ?>" class="profilephoto1" style="width: 50px; border:solid black;border-radius:25px;position:relative;top:15px;">
 
                 <?php
                         }
@@ -102,14 +102,16 @@
                             class="menu-button1"><span class="menutext">Educate</span></button></a></span>
                 <span class="reminders-page-text7"><a href="../help-html/index1.php"><button class="menu-button1"><span
                                 class="menutext">Help</span></button></a></span>
+                                <span class="reminders-page-text8"><a href="../shopping-html/index1.php"><button class="menu-button1"><span
+                                class="menutext">Shopping List</span></button></a></span>
 
-                <div style="position: relative; top:620px; left:20px;"><a href="../register.php"><span
+                <div style="position: relative; top:670px; left:20px;"><a href="../register.php"><span
                             style="color: red; font-size: 20; ">Log Out</span></a></div>
             </div>
         </div>
          <div class="searchbar">
             <form>
-                <input type="text" class="" id="myInput" style="border: 20px;" onkeyup="myFunction()"
+                <input type="text" class="" id="myInput" style="border: 20px;width:160px;" onkeyup="myFunction()"
                     placeholder="Search for a Category...">
             </form>
             <img src="../public/playground_assets/search.svg" class="Searchicon">
@@ -129,22 +131,34 @@
                     $array[] = $row;
                 }
                 //IF You add new categories, add it here
-                if(isset($array[2]))
+
+                if(isset($array[7]))
+                $reqarray = array($array[0]['total_amount'], $array[1]['total_amount'], $array[2]['total_amount'], $array[3]['total_amount'], $array[4]['total_amount'], $array[5]['total_amount'], $array[6]['total_amount'], $array[7]['total_amount']);
+                else if(isset($array[6]))
+                $reqarray = array($array[0]['total_amount'], $array[1]['total_amount'], $array[2]['total_amount'], $array[3]['total_amount'], $array[4]['total_amount'], $array[5]['total_amount'], $array[6]['total_amount']);
+                else if(isset($array[5]))
+                $reqarray = array($array[0]['total_amount'], $array[1]['total_amount'], $array[2]['total_amount'], $array[3]['total_amount'], $array[4]['total_amount'], $array[5]['total_amount']);
+                else if(isset($array[4]))
+                $reqarray = array($array[0]['total_amount'], $array[1]['total_amount'], $array[2]['total_amount'], $array[3]['total_amount'], $array[4]['total_amount']);
+                else if(isset($array[3]))
+                $reqarray = array($array[0]['total_amount'], $array[1]['total_amount'], $array[2]['total_amount'], $array[3]['total_amount']);
+                else if(isset($array[2]))
                 $reqarray = array($array[0]['total_amount'], $array[1]['total_amount'], $array[2]['total_amount']);
                 else if(isset($array[1]))
                 $reqarray = array($array[0]['total_amount'], $array[1]['total_amount']);
                 else if(isset($array[0]))
                 $reqarray = array($array[0]['total_amount']);
-
+                else
+                    $reqarray = array();
             }
             ?>
             <div style="margin:auto;">
                 <canvas id="myChart" style="width:100%; max-width:600px;"></canvas>
                 <script>
-                    var xValues = ["All", "Transport", "Food"];
+                    var xValues = ["All", "Transport", "Food","Shopping","Rent","Petrol","Medicine","Entertainment"];
 
                     var yValues = <?php echo '["' .implode('", "', $reqarray). '"]' ?>;
-                    var barColors = ["#b91d47", "#00aba9", "#2b5797", "#e8c3b9", "#1e7145"];
+                    var barColors = ["#b91d47", "#00aba9", "#2b5797", "#e8c3b9", "#1e7145", "#f7de3f", "#FF5733", "#FFC300" ];
                     new Chart("myChart", {
                         type: "pie",
                         data: {

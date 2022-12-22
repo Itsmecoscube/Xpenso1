@@ -51,7 +51,7 @@ body{
     bottom: -80px;
 }
 form{
-    height: 550px;
+    height: 570px;
     width: 400px;
     background-color: rgba(51, 255, 61, 0.22);
     position: absolute;
@@ -152,11 +152,11 @@ button{
 
         <label>Email ID</label>
 
-        <input type="text" name="uname" placeholder="Email ID" /><br />
+        <input type="text" name="uname" placeholder="Email ID" required/><br />
 
         <label>Password</label>
 
-        <input type="password" name="password" placeholder="Password" /><br />
+        <input type="password" name="password" placeholder="Password" required/><br />
 
         <button type="submit">Login</button>
         <div class="social">
