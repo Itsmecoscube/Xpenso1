@@ -30,14 +30,14 @@
                 <br><br>
                 <span style ="font-weight: 600;">Category</span><br>
                 <select id="category" name="category">
-                    <option value="ALL">General</option>
+                    <option value="General">General</option>
                     <option value="Transport">Transport</option>
                     <option value="Food">Food</option>
-                    <option value="Food">Shopping</option>
-                    <option value="Food">Rent</option>
-                    <option value="Food">Petrol</option>
-                    <option value="Food">Medicine</option>
-                    <option value="Food">Entertainment</option>
+                    <option value="Shopping">Shopping</option>
+                    <option value="Rent">Rent</option>
+                    <option value="Petrol">Petrol</option>
+                    <option value="Medicine">Medicine</option>
+                    <option value="Entertainment">Entertainment</option>
 </select>
 <br><br>
                 <button type="submit" class="btn btn-primary">Submit</button>

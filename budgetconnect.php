@@ -28,6 +28,21 @@ if ($mysqli->connect_error) {
     $stmt->execute();
     $stmt->close();
 
+    $query = "select * from Transaction join performs on TID=Transaction_ID where Emailperforms='$email' and category='$category' and Type='Debit'";
+    $result = $mysqli->query($query);
+    if (mysqli_num_rows($result) > 0) {
+        $stmt = $mysqli->prepare("update budget set Spent_amount = (select sum(amount) from Transaction join performs on TID=Transaction_ID where category='$category' and Emailperforms='$email' and Type='Debit') where category='$category' and BID='$BID'");
+        $stmt->execute();
+        $stmt->close();
+    }
+
+    $query = "select * from Transaction join performs on TID=Transaction_ID where Emailperforms='$email' and category='$category' and Type='Credit'";
+    $result = $mysqli->query($query);
+    if (mysqli_num_rows($result) > 0) {
+        $stmt = $mysqli->prepare("update budget set Total_amount = (select sum(amount) from Transaction join performs on TID=Transaction_ID where category='$category' and Emailperforms='$email' and Type='Credit')+$amount where category='$category' and BID='$BID'");
+        $stmt->execute();
+        $stmt->close();
+    }
     $mysqli->close();
     header('Location: budget-html/index1.php');
 }

@@ -17,16 +17,16 @@
           <input type="text" placeholder="Enter Email" name="email" id="email" required>
       
           <label for="psw"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="password" id="password" required>
+          <input type="password" placeholder="Enter Password" name="password" id="password" minlength=8 maxlength=15 required>
       
           <label for="psw-repeat"><b>Repeat Password</b></label>
-          <input type="password" placeholder="Repeat Password" name="password2" id="password2" required>
+          <input type="password" placeholder="Repeat Password" name="password2" id="password2" minlength=8 maxlength=15 required>
 
           <label for="name"><b>Name</b></label>
           <input type="text" placeholder="Enter Name" name="name" id="name" required>
 
           <label for="number"><b>Phone Number</b></label>
-          <input type="number" placeholder="Enter Contact No." name="mobileno" id="mobileno" required>
+          <input type="number" placeholder="Enter Contact No." name="mobileno" id="mobileno" minlength=10 maxlength=10 required>
 
           <label for="age"><b>Age</b></label>
           <input type="number" placeholder="Enter Age" name="age" id="age" required>

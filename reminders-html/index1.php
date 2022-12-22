@@ -7,8 +7,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" data-tag="font" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" data-tag="font" />
     <link rel="stylesheet" href="index1.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-    <script src="https://kit.fontawesome.com/2291efdc8d.js" crossorigin="anonymous"></script>
 
     <!---->
 
@@ -21,7 +19,26 @@
         <!-- Right Division-->
         <div class="reminders-page-right">
             <div class="profile">
-                <img src="../public/playground_assets/profile.png" class="profilephoto">
+            <?php
+$conn = new mysqli('localhost', 'root', '', 'xpenso');
+if ($conn->connect_error) {
+    die('Connection Failed: ' . $conn->connect_error);
+} else {
+    $var = $_SESSION['user_name'];
+    $sql = "SELECT profile_pic_url FROM user where email='$var'";
+    $result = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($result) > 0) {
+        while ($images = mysqli_fetch_assoc($result)) {
+
+
+?>
+<img src="../uploads/<?= $images['profile_pic_url'] ?>" class="profilephoto1" style="width: 50px; border:solid black;border-radius:25px;position:relative;top:15px;">
+
+<?php
+        }
+    }
+}
+?>
                 <div class="username">
                     <?php
                     $var = $_SESSION['name'];
@@ -37,8 +54,8 @@
             </div>
 
             <div class="add-transaction">
-                <a href="../addtran.php"><button type="button" class="add-transaction-button">
-                        <i class="fa-solid fa-plus"></i> Add Reminder
+                <a href="addreminder.php"><button type="button" class="add-transaction-button">
+                         + Add Reminder
                     </button></a>
             </div>
         </div>
@@ -66,13 +83,15 @@
                             </span></button></a></span>
                 <span class="reminders-page-text6"><a href="../educate-html/index1.php"><button class="menu-button1"><span class="menutext">Educate</span></button></a></span>
                 <span class="reminders-page-text7"><a href="../help-html/index1.php"><button class="menu-button1"><span class="menutext">Help</span></button></a></span>
-                <div style="position: relative; top:620px; left:20px;"><a href="../register.php"><span
+                <span class="reminders-page-text8"><a href="../shopping-html/index1.php"><button class="menu-button1"><span
+                                class="menutext">Shopping List</span></button></a></span>
+                <div style="position: relative; top:670px; left:20px;"><a href="../register.php"><span
                             style="color: red; font-size: 20; ">Log Out</span></a></div>
             </div>
         </div>
         <div class="searchbar">
             <form>
-                <input type="search" placeholder="  Search" name="search" style="border: 20px;">
+                <input type="search" placeholder="  Search" name="search" style="border: 20px; width:160px;">
             </form>
             <img src="../public/playground_assets/search.svg" class="Searchicon">
         </div>
@@ -80,35 +99,8 @@
         <div class="reminders-page-middle">
 
             <h1>Reminders</h1>
-            <div>
-                <table width="75%" border="0" cellpadding="6" class="transaction-table">
-                    <th class="transaction-header">LAST MONTH</th>
-                    <th class="transaction-header">THIS MONTH</th>
-                    <th class="transaction-header">FUTURE </th>
-                    <tr align="center">
-                        <td class="transaction-data">Inflow</td>
-                        <td class="transaction-data"></td>
-                        <td class="transaction-data" style="color: green;">$14000</td>
-                    </tr>
-                    <tr align="center">
-                        <td class="transaction-data">Outflow</td>
-                        <td></td>
-                        <td class="transaction-data" style="color: red;">$8000</td>
-                    </tr>
-                    <tr align="center">
-                        <td class="transaction-data">Available</td>
-                        <td></td>
-                        <td class="transaction-data" style="color:darkgoldenrod">$6000</td>
-                    </tr>
-                </table>
-                
-            </div>
-                <!--
-            <div style="margin:auto;">
-                    <canvas id="myChart" style="width:100%; max-width:600px; margin:auto;"></canvas>
-                    <script src="piechart.js"></script>
-                </div>
--->
+            
+            
         </div>
     </div>
 </body>

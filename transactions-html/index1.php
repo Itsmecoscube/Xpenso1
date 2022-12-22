@@ -40,7 +40,7 @@
 
 
                 ?>
-                <img src="../uploads/<?= $images['profile_pic_url'] ?>" class="profilephoto1" style="width: 50px;">
+                <img src="../uploads/<?= $images['profile_pic_url'] ?>" class="profilephoto1" style="width: 50px; border:solid black;border-radius:25px;position:relative;top:15px;">
 
                 <?php
                         }
@@ -102,14 +102,16 @@
                             class="menu-button1"><span class="menutext">Educate</span></button></a></span>
                 <span class="reminders-page-text7"><a href="../help-html/index1.php"><button class="menu-button1"><span
                                 class="menutext">Help</span></button></a></span>
+                <span class="reminders-page-text8"><a href="../shopping-html/index1.php"><button class="menu-button1"><span
+                                class="menutext">Shopping List</span></button></a></span>
 
-                <div style="position: relative; top:620px; left:20px;"><a href="../register.php"><span
+                <div style="position: relative; top:670px; left:20px;"><a href="../register.php"><span
                             style="color: red; font-size: 20; ">Log Out</span></a></div>
             </div>
         </div>
         <div class="searchbar">
             <form>
-                <input type="text" class="" id="myInput" style="border: 20px;" onkeyup="myFunction()"
+                <input type="text" class="" id="myInput" style="border: 20px;width:160px;" onkeyup="myFunction()"
                     placeholder="Search for a Category...">
             </form>
             <img src="../public/playground_assets/search.svg" class="Searchicon">
@@ -141,6 +143,24 @@
         <div class="reminders-page-middle">
 
             <h1>Transactions</h1>
+            <div>
+                        <?php if (isset($_GET['error'])) { ?>
+
+                        <p class="error">
+                            <?php echo $_GET['error']; ?>
+                        </p>
+
+                        <?php } ?>
+                        <form action="deletetransaction.php" method="post">
+                            <input type="number" name="TID" placeholder="Enter the ID of Transaction to be deleted.."
+                                style="width:300px;border:solid red; border-radius:5px;height:30px;" required>
+                            <button type="submit" name="delete"
+                                style="width: 100px;height: 30px;background-color: red;border-radius: 10px;border-color: #f5f5fb;">Delete</button>
+                            <br /><br />
+
+                        </form>
+                    </div>
+
             <div class="transactions-table">
                 <table border="5" cellspacing="2" cellpadding="2" width="70%" margin="auto" id="myTable" style="border:5px solid black; border-radius:10px;">
                     <tr height="60px" class="header">
