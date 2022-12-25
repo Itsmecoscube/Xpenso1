@@ -1,3 +1,7 @@
+<?php session_start(); 
+if(!isset($_SESSION['user_name']))
+header("Location:../login.php");
+?>
 <?php
 
 $item_name = $_POST['Item-name'];

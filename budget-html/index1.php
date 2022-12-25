@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php session_start(); 
+if(!isset($_SESSION['user_name']))
+header("Location:../login.php");
+?>
 <html>
 <title>Xpenso | Budget</title>
 <link rel="icon" href="../public/playground_assets/Logo.png" type="image/x-icon">
