@@ -29,7 +29,16 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
     <!---->
-
+    <style>
+    .progressbar{
+        border-radius: 10px;
+        color:black;
+        background: greenyellow;
+    }
+    .Progress p{
+        font-size: 13;
+    }
+</style>
 </head>
 
 <body class="body">
@@ -71,7 +80,7 @@ if ($conn->connect_error) {
             <div class="Progress-Reminders">
                 <span class="">Progress</span>
             </div>
-            <div class="Progress-Reminders">
+            <div class="Reminders">
                 <span>Reminders</span>
             </div>
 

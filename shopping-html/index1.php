@@ -11,7 +11,16 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
         data-tag="font" />
     <link rel="stylesheet" href="index1.css">
-
+    <style>
+    .progressbar{
+        border-radius: 10px;
+        color:black;
+        background: greenyellow;
+    }
+    .Progress p{
+        font-size: 13;
+    }
+</style>
     <!---->
 
 </head>
@@ -56,10 +65,34 @@
                 </div>
             </div>
             <div class="Progress">
-                <span class="">Progress</span>
+                <span>Progress</span>
+                <?php
+                $var = $_SESSION['user_name'];
+                $sql = "SELECT * from Budget join keeps on BID=Budget_ID where emailkeeps='$var'";
+                $result = mysqli_query($conn, $sql);
+                if(mysqli_num_rows($result) > 0){
+                    while( $row = mysqli_fetch_assoc($result)){
+                        $spentamt = $row['Spent_amount'];
+                        $totalamt = $row['Total_amount'];
+                        $category = $row['category'];
+                        if($totalamt!=0)
+                        $percentage = (float) $spentamt / (float) $totalamt * 100;
+                        else
+                            $percentage = 0;
+                        $percentage = round($percentage, 2);
+                        if($spentamt>$totalamt)
+                        {
+                            echo '<p style="color:red;">Budget_for_'.$category.'_exceeded '.$percentage.'% Used</p>';
+                        } else {
+                            echo  '<p style="color:green;"> '. $row['category'] .'<br>'. $percentage .'%<br>';
+                            echo '<progress class="progressbar" value="' . $spentamt . '" max="' . $totalamt . '"></progress>';
+                        }
+                    }
+                }
+                ?>
             </div>
             <div class="Reminders">
-                <span>Reminders</span>
+                <span></span>
             </div>
 
             <div class="add-transaction">
@@ -142,74 +175,10 @@
 
             <h1>Shopping List</h1>
             <div class="transactions-table">
-                <table border="5" cellspacing="2" cellpadding="2" width="70%" margin="auto" id="myTable"
-                    style="border:5px solid black; border-radius:10px;">
-                    <tr height="60px" class="header">
-                        <th bgcolor="#AEF28A">
-                            <font face="Arial">ID</font>
-                        </th>
-                        <th bgcolor="#AEF28A">
-                            <font face="Arial">Name</font>
-                        </th>
-                        <th bgcolor="#AEF28A" width="20%">
-                            <font face="Arial">Price</font>
-                        </th>
-                        <th bgcolor="#AEF28A" width="22%">
-                            <font face="Arial">Quantity</font>
-                        </th>
-                        <th bgcolor="#AEF28A" width="25%">
-                            <font face="Arial">Category</font>
-                        </th>
-                        <th bgcolor="#AEF28A" width="25%">
-                            <font face="Arial">Total Cost</font>
-                        </th>
-                    </tr>
-                    <?php
-                    $mysqli = new mysqli('localhost', 'root', '', 'xpenso');
-                    $var = $_SESSION['user_name'];
-                    $query = "SELECT * FROM shopping natural join creates where Email = '$var'";
-
-                    if ($result = $mysqli->query($query)) {
-                        while ($row = $result->fetch_assoc()) {
-                            $field1name = $row["item_ID"];
-                            $field2name = $row["item_name"];
-                            $field3name = (float) $row["item_price"];
-                            $field4name = (float) $row["quantity"];
-                            $field5name = $row["item_cat"];
-                            echo '<tr> 
-                  <td>' . $field1name . '</td> 
-                  <td>' . $field2name . '</td> 
-                  <td>' . "Rs. " . $field3name . '</td> 
-                  <td>' . $field4name . '</td> 
-                  <td>' . $field5name . '</td> 
-                  <td>' . "Rs. " . ($field3name * $field4name) . '</td>';
-                        }
-                        $result->free();
-                    }
-
-                    ?>
-
-                    <div>
-                        <?php if (isset($_GET['error'])) { ?>
-
-                        <p class="error">
-                            <?php echo $_GET['error']; ?>
-                        </p>
-
-                        <?php } ?>
-                        <form action="deleteitem.php" method="post">
-                            <input type="number" name="deleteitem" placeholder="Enter the ID of item to be deleted.."
-                                style="width:300px;border:solid red; border-radius:5px;height:30px;" required>
-                            <button type="submit" name="delete"
-                                style="width: 100px;height: 30px;background-color: red;border-radius: 10px;border-color: #f5f5fb;">Delete</button>
-                            <br /><br />
-
-                        </form>
-                    </div>
-                    <div style="width:50%;border:solid green;border-radius:15px;">
+            <div style="width:50%;border:solid green;border-radius:15px;">
                         <form action="additem.php" method="post" style="position:relative; left:20px;">
-                            <input type="number" name="item_id" placeholder="Enter the ID of item to be deleted.."
-                                style="width:300px;border:solid green; border-radius:5px;height:30px;" required>
+                            <input type="number" name="item_id" placeholder="Enter the ID of item to be added to Transactions"
+                                style="width:350px;border:solid green; border-radius:5px;height:30px;" required>
                             <br><span style="font-weight: 600;">Type of payment</span><br />
                             <select id="transaction-type" name="transaction-type">\
                                 <option value="Debit">Debit</option>
@@ -231,7 +200,73 @@
 
                         </form>
                         <br />
+                    </div><br>
+                    <div>
+                        <?php if (isset($_GET['error'])) { ?>
+
+                        <p class="error">
+                            <?php echo $_GET['error']; ?>
+                        </p>
+
+                        <?php } ?>
                     </div>
+                <form action="code.php" method="post">
+                <table border="5" cellspacing="2" cellpadding="2" width="70%" margin="auto" id="myTable"
+                    style="border:5px solid black; border-radius:10px;">
+                    <tr height="60px" class="header">
+                        <th bgcolor="#AEF28A">
+                            <font face="Arial">ID</font>
+                        </th>
+                        <th bgcolor="#AEF28A">
+                            <font face="Arial">Name</font>
+                        </th>
+                        <th bgcolor="#AEF28A" width="20%">
+                            <font face="Arial">Price</font>
+                        </th>
+                        <th bgcolor="#AEF28A" width="22%">
+                            <font face="Arial">Quantity</font>
+                        </th>
+                        <th bgcolor="#AEF28A" width="25%">
+                            <font face="Arial">Category</font>
+                        </th>
+                        <th bgcolor="#AEF28A" width="25%">
+                            <font face="Arial">Total Cost</font>
+                        </th>
+                        <th bgcolor="#AEF28A" width="25%">
+                            <font face="Arial"><button type = "submit" name="shopping_delete_multiple_btn" style="width: 100px;height: 30px;background-color: red;border-radius: 10px;border-color: #f5f5fb;">Delete</button></font>
+                        </th>
+                    </tr>
+                    <?php
+                    $mysqli = new mysqli('localhost', 'root', '', 'xpenso');
+                    $var = $_SESSION['user_name'];
+                    $query = "SELECT * FROM shopping natural join creates where Email = '$var'";
+
+                    if ($result = $mysqli->query($query)) {
+                        while ($row = $result->fetch_assoc()) {
+                            $field1name = $row["item_ID"];
+                            $field2name = $row["item_name"];
+                            $field3name = (float) $row["item_price"];
+                            $field4name = (float) $row["quantity"];
+                            $field5name = $row["item_cat"];
+                            echo '<tr> 
+                  <td>' . $field1name . '</td> 
+                  <td>' . $field2name . '</td> 
+                  <td>' . "Rs. " . $field3name . '</td> 
+                  <td>' . $field4name . '</td> 
+                  <td>' . $field5name . '</td> 
+                  <td>' . "Rs. " . ($field3name * $field4name) . '</td>';
+                  ?>
+                  <td style="text-align:center;"><input type="checkbox" name="shopping_delete_id[]" value="<?= $field1name; ?>" ></td>
+                  <?php
+                        }
+                        $result->free();
+                    }
+
+                    ?>
+</form>
+                </table>
+                    
+                    
             </div>
 
         </div>

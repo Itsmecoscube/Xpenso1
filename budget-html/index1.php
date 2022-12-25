@@ -11,7 +11,16 @@
     <script src="https://kit.fontawesome.com/2291efdc8d.js" crossorigin="anonymous"></script>
 
     <!---->
-
+<style>
+    .progressbar{
+        border-radius: 10px;
+        color:black;
+        background: greenyellow;
+    }
+    .Progress p{
+        font-size: 13;
+    }
+</style>
 </head>
 
 <body class="body">
@@ -55,9 +64,33 @@ if ($conn->connect_error) {
             
             <div class="Progress">
                 <span>Progress</span>
+                <?php
+                $var = $_SESSION['user_name'];
+                $sql = "SELECT * from Budget join keeps on BID=Budget_ID where emailkeeps='$var'";
+                $result = mysqli_query($conn, $sql);
+                if(mysqli_num_rows($result) > 0){
+                    while( $row = mysqli_fetch_assoc($result)){
+                        $spentamt = $row['Spent_amount'];
+                        $totalamt = $row['Total_amount'];
+                        $category = $row['category'];
+                        if($totalamt!=0)
+                        $percentage = (float) $spentamt / (float) $totalamt * 100;
+                        else
+                            $percentage = 0;
+                        $percentage = round($percentage, 2);
+                        if($spentamt>$totalamt)
+                        {
+                            echo '<p style="color:red;">Budget_for_'.$category.'_exceeded '.$percentage.'% Used</p>';
+                        } else {
+                            echo  '<p style="color:green;"> '. $row['category'] .'<br>'. $percentage .'%<br>';
+                            echo '<progress class="progressbar" value="' . $spentamt . '" max="' . $totalamt . '"></progress>';
+                        }
+                    }
+                }
+                ?>
             </div>
             <div class="Reminders">
-                <span>Reminders</span>
+                <span></span>
             </div>
 
             <div class="add-budget">
@@ -131,7 +164,9 @@ if ($conn->connect_error) {
         <div class="reminders-page-middle">
 
             <h1>Budget</h1>
+            <form method="post" action = "code.php">
             <div class="transactions-table">
+            
             <div>
                         <?php if (isset($_GET['error'])) { ?>
 
@@ -140,17 +175,66 @@ if ($conn->connect_error) {
                         </p>
 
                         <?php } ?>
-                        <form action="deletebudget.php" method="post">
+                        <!-- <form action="deletebudget.php" method="post">
                             <input type="number" name="BID" placeholder="Enter the ID of Budget to be deleted.."
                                 style="width:300px;border:solid red; border-radius:5px;height:30px;" required>
                             <button type="submit" name="delete"
                                 style="width: 100px;height: 30px;background-color: red;border-radius: 10px;border-color: #f5f5fb;">Delete</button>
                             <br /><br />
 
-                        </form>
+                        </form> -->
                     </div>
-            <?php include 'print-budget.php'; ?>
+                    
+                    <br><br>
+                    <table border="5" cellspacing="2" cellpadding="2" width = "70%" margin:auto style="border:5px solid black; border-radius:10px;"> 
+      <tr height="60px"> 
+          <th bgcolor="#AEF28A" > <font face="Arial">Budget ID</font> </td> 
+          <th bgcolor="#AEF28A" width="20%"> <font face="Arial">Total Amount</font> </td> 
+          <th bgcolor="#AEF28A" width="22%"> <font face="Arial">Spent Amount</font> </td> 
+          <th bgcolor="#AEF28A"> <font face="Arial">Remaining Amount</font> </td> 
+          <th bgcolor="#AEF28A"> <font face="Arial">Category</font> </td> 
+          <th bgcolor="#AEF28A">
+                            <font face="Arial"><button type = "submit" name="budget_delete_multiple_btn" style="width: 100px;height: 30px;background-color: red;border-radius: 10px;border-color: #f5f5fb;">Delete</button></font>
+                        </th>
+      </tr>
+      <?php
+$mysqli = new mysqli('localhost', 'root', '', 'xpenso');
+$var = $_SESSION['user_name'];
+$query = "SELECT * FROM budget join keeps on BID = Budget_ID where Emailkeeps = '$var'";
+
+echo '';
+
+if ($result = $mysqli->query($query)) {
+    while ($row = $result->fetch_assoc()) {
+        $field1name = $row["BID"];
+        $field2name = (int) $row["Total_amount"];
+        $field3name = (int) $row["Spent_amount"];
+        $field4name = $field2name - $field3name;
+        $field5name = $row["category"];
+        echo '<tr> 
+                  <td>' . $field1name . '</td> 
+                  <td>' . "Rs. " . $field2name . '</td> ';
+                  
+        if ($field2name < $field3name)
+            echo '<td bgcolor="red">' . "Rs. " . $field3name . '</td> ';
+        else if (($field3name > ((8 / 10) * $field2name)) && ($field3name <= $field2name))
+            echo '<td bgcolor="#FFA600">' . "Rs. " . $field3name . '</td> ';
+        else
+            echo '<td bgcolor="#8EFF00">' . "Rs. " . $field3name . '</td> ';
+
+        echo '<td>' . "Rs. " . $field4name . '</td> 
+              <td>' . $field5name . '</td> ';
+              ?>
+              <td><input type="checkbox" name="budget_delete_id[]" value="<?= $field1name; ?>"></td>
+          </tr>
+          <?php
+    }
+    
+    $result->free();
+}
+?>
         </div>
+        
     </div>
 </body>
 
