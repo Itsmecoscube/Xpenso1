@@ -17,13 +17,14 @@ if ($mysqli->connect_error) {
             $BID = 1;
         }
     }
-    $stmt = $mysqli->prepare("insert into budget (BID,Total_amount,category) values(?,?,?)");
-    $stmt->bind_param("iis", $BID, $amount, $category);
-    $stmt->execute();
-    $stmt->close();
-
-
-    $stmt = $mysqli->prepare("insert into keeps (Emailkeeps,Budget_ID) values(?,?)");
+    $query = "select * from Budget join keeps on BID=Budget_ID where Emailkeeps='$email' and category = '$category'";
+    $result = $mysqli->query($query);
+    if (mysqli_num_rows($result) == 0) {
+        $stmt = $mysqli->prepare("insert into budget (BID,Total_amount,category) values(?,?,?)");
+        $stmt->bind_param("iis", $BID, $amount, $category);
+        $stmt->execute();
+        $stmt->close();
+        $stmt = $mysqli->prepare("insert into keeps (Emailkeeps,Budget_ID) values(?,?)");
     $stmt->bind_param("si", $email, $BID);
     $stmt->execute();
     $stmt->close();
@@ -40,6 +41,20 @@ if ($mysqli->connect_error) {
     $result = $mysqli->query($query);
     if (mysqli_num_rows($result) > 0) {
         $stmt = $mysqli->prepare("update budget set Total_amount = (select sum(amount) from Transaction join performs on TID=Transaction_ID where category='$category' and Emailperforms='$email' and Type='Credit')+$amount where category='$category' and BID='$BID'");
+        $stmt->execute();
+        $stmt->close();
+    }
+    }
+    else
+    {
+        print_r("Hello World"); 
+        $query = "select * from Budget join keeps on BID=Budget_ID where Emailkeeps='$email' and category = '$category'";
+        $result = $mysqli->query($query);
+        $rows = $result->fetch_assoc();
+        $BID = $rows['BID'];
+        $current_budget = $rows['Total_amount'];
+        $total_amount = $amount + $current_budget;
+        $stmt = $mysqli->prepare("UPDATE Budget set Total_amount =$total_amount where BID='$BID'");
         $stmt->execute();
         $stmt->close();
     }

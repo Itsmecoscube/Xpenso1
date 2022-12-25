@@ -27,6 +27,8 @@ if ($result = $mysqli->query($query)) {
             echo '
           <td bgcolor="#77D500">' . $field4name . '</td>';
         }
+
+        echo '<td><a href="deletetransaction.php?t_id='. $field1name .'">Delete</a></td>';
         echo '</tr>';
     }
     $result->free();

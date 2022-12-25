@@ -13,7 +13,17 @@
     <link rel="stylesheet" href="index1.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="https://kit.fontawesome.com/2291efdc8d.js" crossorigin="anonymous"></script>
+    <style>
+        .progressbar {
+            border-radius: 10px;
+            color: black;
+            background: greenyellow;
+        }
 
+        .Progress p {
+            font-size: 13;
+        }
+    </style>
     <!---->
 
 </head>
@@ -40,7 +50,8 @@
 
 
                 ?>
-                <img src="../uploads/<?= $images['profile_pic_url'] ?>" class="profilephoto1" style="width: 50px; border:solid black;border-radius:25px;position:relative;top:15px;">
+                <img src="../uploads/<?= $images['profile_pic_url'] ?>" class="profilephoto1"
+                    style="width: 50px; border:solid black;border-radius:25px;position:relative;top:15px;">
 
                 <?php
                         }
@@ -58,10 +69,33 @@
                 </div>
             </div>
             <div class="Progress">
-                <span class="">Progress</span>
+                <span>Progress</span>
+                <?php
+                $var = $_SESSION['user_name'];
+                $sql = "SELECT * from Budget join keeps on BID=Budget_ID where emailkeeps='$var'";
+                $result = mysqli_query($conn, $sql);
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $spentamt = $row['Spent_amount'];
+                        $totalamt = $row['Total_amount'];
+                        $category = $row['category'];
+                        if($totalamt!=0)
+                        $percentage = (float) $spentamt / (float) $totalamt * 100;
+                        else
+                            $percentage = 0;
+                        $percentage = round($percentage, 2);
+                        if ($spentamt > $totalamt) {
+                            echo '<p style="color:red;">Budget_for_' . $category . '_exceeded ' . $percentage . '% Used</p>';
+                        } else {
+                            echo '<p style="color:green;"> ' . $row['category'] . '<br>' . $percentage . '%<br>';
+                            echo '<progress class="progressbar" value="' . $spentamt . '" max="' . $totalamt . '"></progress>';
+                        }
+                    }
+                }
+                ?>
             </div>
             <div class="Reminders">
-                <span>Reminders</span>
+                <span></span>
             </div>
 
             <div class="add-transaction">
@@ -102,8 +136,8 @@
                             class="menu-button1"><span class="menutext">Educate</span></button></a></span>
                 <span class="reminders-page-text7"><a href="../help-html/index1.php"><button class="menu-button1"><span
                                 class="menutext">Help</span></button></a></span>
-                <span class="reminders-page-text8"><a href="../shopping-html/index1.php"><button class="menu-button1"><span
-                                class="menutext">Shopping List</span></button></a></span>
+                <span class="reminders-page-text8"><a href="../shopping-html/index1.php"><button
+                            class="menu-button1"><span class="menutext">Shopping List</span></button></a></span>
 
                 <div style="position: relative; top:670px; left:20px;"><a href="../register.php"><span
                             style="color: red; font-size: 20; ">Log Out</span></a></div>
@@ -118,77 +152,118 @@
         </div>
         <!-- Mid Division-->
         <script>
-        function myFunction() {
-            //Declare variables
-            var input, filter, table, tr, td, i, txtvalue;
-            input = document.getElementById("myInput");
-            filter = input.value.toUpperCase();
-            table = document.getElementById("myTable");
-            tr = table.getElementsByTagName("tr");
+            function myFunction() {
+                //Declare variables
+                var input, filter, table, tr, td, i, txtvalue;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("myTable");
+                tr = table.getElementsByTagName("tr");
 
-            //loop through all table rows and hide those who don't match the search query
-            for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[5];
-                if (td) {
-                    txtvalue = td.textContent || td.innerText;
-                    if (txtvalue.toLocaleUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
-                    } else {
-                        tr[i].style.display = "none";
+                //loop through all table rows and hide those who don't match the search query
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[5];
+                    if (td) {
+                        txtvalue = td.textContent || td.innerText;
+                        if (txtvalue.toLocaleUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
                     }
                 }
             }
-        }
-    </script>
+        </script>
         <div class="reminders-page-middle">
 
             <h1>Transactions</h1>
             <div>
-                        <?php if (isset($_GET['error'])) { ?>
+                <?php if (isset($_GET['error'])) { ?>
 
-                        <p class="error">
-                            <?php echo $_GET['error']; ?>
-                        </p>
+                <p class="error">
+                    <?php echo $_GET['error']; ?>
+                </p>
 
-                        <?php } ?>
-                        <form action="deletetransaction.php" method="post">
+                <?php } ?>
+                <!-- <form action="deletetransaction.php" method="post">
                             <input type="number" name="TID" placeholder="Enter the ID of Transaction to be deleted.."
                                 style="width:300px;border:solid red; border-radius:5px;height:30px;" required>
                             <button type="submit" name="delete"
                                 style="width: 100px;height: 30px;background-color: red;border-radius: 10px;border-color: #f5f5fb;">Delete</button>
                             <br /><br />
-
-                        </form>
-                    </div>
-
-            <div class="transactions-table">
-                <table border="5" cellspacing="2" cellpadding="2" width="70%" margin="auto" id="myTable" style="border:5px solid black; border-radius:10px;">
-                    <tr height="60px" class="header">
-                        <th bgcolor="#AEF28A">
-                            <font face="Arial">Transaction ID</font>
-                        </th>
-                        <th bgcolor="#AEF28A" width="20%">
-                            <font face="Arial">Amount</font>
-                        </th>
-                        <th bgcolor="#AEF28A" width="22%">
-                            <font face="Arial">Mode of Payment</font>
-                        </th>
-                        <th bgcolor="#AEF28A" width="25%">
-                            <font face="Arial">Date</font>
-                        </th>
-                        <th bgcolor="#AEF28A" width="25%">
-                            <font face="Arial">Time</font>
-                        </th>
-                        <th bgcolor="#AEF28A">
-                            <font face="Arial">Category</font>
-                        </th>
-                        <th bgcolor="#AEF28A">
-                            <font face="Arial">Type</font>
-                        </th>
-                    </tr>
-                    <?php include 'print-transactions.php'; ?>
+                        </form> -->
             </div>
+            <form action="code.php" method="post">
+                <div class="transactions-table">
+                    <table border="5" cellspacing="2" cellpadding="2" width="70%" margin="auto" id="myTable"
+                        style="border:5px solid black; border-radius:10px;">
+                        <tr height="60px" class="header">
+                            <th bgcolor="#AEF28A">
+                                <font face="Arial">Transaction ID</font>
+                            </th>
+                            <th bgcolor="#AEF28A" width="20%">
+                                <font face="Arial">Amount</font>
+                            </th>
+                            <th bgcolor="#AEF28A" width="22%">
+                                <font face="Arial">Mode of Payment</font>
+                            </th>
+                            <th bgcolor="#AEF28A" width="25%">
+                                <font face="Arial">Date</font>
+                            </th>
+                            <th bgcolor="#AEF28A" width="25%">
+                                <font face="Arial">Time</font>
+                            </th>
+                            <th bgcolor="#AEF28A">
+                                <font face="Arial">Category</font>
+                            </th>
+                            <th bgcolor="#AEF28A">
+                                <font face="Arial">Type</font>
+                            </th>
+                            <th bgcolor="#AEF28A">
+                                <font face="Arial"><button type = "submit" name="transaction_delete_multiple_btn" style="width: 100px;height: 30px;background-color: red;border-radius: 10px;border-color: #f5f5fb;">Delete</button></font>
+                            </th>
+                        </tr>
+                        <?php
+                    $mysqli = new mysqli('localhost', 'root', '', 'xpenso');
+                    $var = $_SESSION['user_name'];
+                    $query = "SELECT * FROM transaction join performs on TID = Transaction_ID where Emailperforms = '$var'";
 
+                    if ($result = $mysqli->query($query)) {
+                        while ($row = $result->fetch_assoc()) {
+                            $field1name = $row["TID"];
+                            $field2name = $row["Mode"];
+                            $field3name = $row["Date"];
+                            $field4name = $row["Type"];
+                            $field5name = $row["Amount"];
+                            $field6name = $row["time"];
+                            $field6name = date("h:m:s a", strtotime($field6name));
+                            $field7name = $row["category"];
+                            echo '<tr> 
+                  <td>' . $field1name . '</td> 
+                  <td>' . "Rs. " . $field5name . '</td> 
+                  <td>' . $field2name . '</td> 
+                  <td>' . $field3name . '</td> 
+                  <td>' . $field6name . '</td> 
+                  <td>' . $field7name . '</td> ';
+                            if ($field4name == 'Debit') {
+                                echo '
+                  <td bgcolor="#FF2A00">' . $field4name . '</td>';
+                            } else {
+                                echo '
+          <td bgcolor="#77D500">' . $field4name . '</td>';
+                            }
+                    ?>
+                        <td style="text-align:center;"><input type="checkbox" name="transaction_delete_id[]" value="<?= $field1name; ?>" ></td>
+                        <?php
+                            echo '</tr>';
+                        }
+                        $result->free();
+                    }
+                    ?>
+                    </form>
+                    </table>
+                </div>
+                
         </div>
     </div>
 </body>

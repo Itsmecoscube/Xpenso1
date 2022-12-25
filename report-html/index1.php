@@ -13,7 +13,16 @@
     <link rel="stylesheet" href="index1.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="https://kit.fontawesome.com/2291efdc8d.js" crossorigin="anonymous"></script>
-
+    <style>
+    .progressbar{
+        border-radius: 10px;
+        color:black;
+        background: greenyellow;
+    }
+    .Progress p{
+        font-size: 13;
+    }
+</style>
     <!---->
 
 </head>
@@ -58,10 +67,34 @@
                 </div>
             </div>
             <div class="Progress">
-                <span class="">Progress</span>
+                <span>Progress</span>
+                <?php
+                $var = $_SESSION['user_name'];
+                $sql = "SELECT * from Budget join keeps on BID=Budget_ID where emailkeeps='$var'";
+                $result = mysqli_query($conn, $sql);
+                if(mysqli_num_rows($result) > 0){
+                    while( $row = mysqli_fetch_assoc($result)){
+                        $spentamt = $row['Spent_amount'];
+                        $totalamt = $row['Total_amount'];
+                        $category = $row['category'];
+                        if($totalamt!=0)
+                        $percentage = (float) $spentamt / (float) $totalamt * 100;
+                        else
+                            $percentage = 0;
+                        $percentage = round($percentage, 2);
+                        if($spentamt>$totalamt)
+                        {
+                            echo '<p style="color:red;">Budget_for_'.$category.'_exceeded '.$percentage.'% Used</p>';
+                        } else {
+                            echo  '<p style="color:green;"> '. $row['category'] .'<br>'. $percentage .'%<br>';
+                            echo '<progress class="progressbar" value="' . $spentamt . '" max="' . $totalamt . '"></progress>';
+                        }
+                    }
+                }
+                ?>
             </div>
             <div class="Reminders">
-                <span>Reminders</span>
+                <span></span>
             </div>
 
             <div class="add-transaction">
@@ -124,38 +157,30 @@
             $mysqli = new mysqli('localhost', 'root', '', 'xpenso');
             $var = $_SESSION['user_name'];
             $array = array();
+            $array["General"]['total_amount'] = 0;
+            $array["Transport"]['total_amount'] = 0;
+            $array["Food"]['total_amount'] = 0;
+            $array["Shopping"]['total_amount'] = 0;
+            $array["Rent"]['total_amount'] = 0;
+            $array["Petrol"]['total_amount'] = 0;
+            $array["Medicine"]['total_amount'] = 0;
+            $array["Entertainment"]['total_amount'] = 0;
             $query = "SELECT category, sum(amount) as total_amount FROM transaction join performs on TID = Transaction_ID where Emailperforms = '$var' and Type = 'Debit' group by category ";
             if ($result = $mysqli->query($query)) {
                 while ($row = $result->fetch_assoc()) {
                     $category = $row["category"];
-                    $array[] = $row;
+                    $array[$category] = $row;
                 }
                 //IF You add new categories, add it here
 
-                if(isset($array[7]))
-                $reqarray = array($array[0]['total_amount'], $array[1]['total_amount'], $array[2]['total_amount'], $array[3]['total_amount'], $array[4]['total_amount'], $array[5]['total_amount'], $array[6]['total_amount'], $array[7]['total_amount']);
-                else if(isset($array[6]))
-                $reqarray = array($array[0]['total_amount'], $array[1]['total_amount'], $array[2]['total_amount'], $array[3]['total_amount'], $array[4]['total_amount'], $array[5]['total_amount'], $array[6]['total_amount']);
-                else if(isset($array[5]))
-                $reqarray = array($array[0]['total_amount'], $array[1]['total_amount'], $array[2]['total_amount'], $array[3]['total_amount'], $array[4]['total_amount'], $array[5]['total_amount']);
-                else if(isset($array[4]))
-                $reqarray = array($array[0]['total_amount'], $array[1]['total_amount'], $array[2]['total_amount'], $array[3]['total_amount'], $array[4]['total_amount']);
-                else if(isset($array[3]))
-                $reqarray = array($array[0]['total_amount'], $array[1]['total_amount'], $array[2]['total_amount'], $array[3]['total_amount']);
-                else if(isset($array[2]))
-                $reqarray = array($array[0]['total_amount'], $array[1]['total_amount'], $array[2]['total_amount']);
-                else if(isset($array[1]))
-                $reqarray = array($array[0]['total_amount'], $array[1]['total_amount']);
-                else if(isset($array[0]))
-                $reqarray = array($array[0]['total_amount']);
-                else
-                    $reqarray = array();
+                $reqarray = array($array["General"]['total_amount'], $array["Transport"]['total_amount'], $array["Food"]['total_amount'], $array["Shopping"]['total_amount'], $array["Rent"]['total_amount'], $array["Petrol"]['total_amount'], $array["Medicine"]['total_amount'], $array["Entertainment"]['total_amount']);
+                
             }
             ?>
             <div style="margin:auto;">
                 <canvas id="myChart" style="width:100%; max-width:600px;"></canvas>
                 <script>
-                    var xValues = ["All", "Transport", "Food","Shopping","Rent","Petrol","Medicine","Entertainment"];
+                    var xValues = ["General", "Transport", "Food","Shopping","Rent","Petrol","Medicine","Entertainment"];
 
                     var yValues = <?php echo '["' .implode('", "', $reqarray). '"]' ?>;
                     var barColors = ["#b91d47", "#00aba9", "#2b5797", "#e8c3b9", "#1e7145", "#f7de3f", "#FF5733", "#FFC300" ];
@@ -225,7 +250,7 @@
                         options: {
                             legend: { display: false },
                             scales: {
-                                yAxes: [{ ticks: { min: 0, max: 10000 } }],
+                                yAxes: [{ ticks: { min: 0, max: 6000 } }],
                             }
                         }
                     });

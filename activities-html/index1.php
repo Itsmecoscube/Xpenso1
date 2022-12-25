@@ -7,7 +7,16 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" data-tag="font" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" data-tag="font" />
     <link rel="stylesheet" href="index1.css">
-
+    <style>
+    .progressbar{
+        border-radius: 10px;
+        color:black;
+        background: greenyellow;
+    }
+    .Progress p{
+        font-size: 13;
+    }
+</style>
     <!---->
 
 </head>
@@ -47,10 +56,34 @@ if ($conn->connect_error) {
                 </div>
             </div>
             <div class="Progress">
-                <span class="">Progress</span>
+                <span>Progress</span>
+                <?php
+                $var = $_SESSION['user_name'];
+                $sql = "SELECT * from Budget join keeps on BID=Budget_ID where emailkeeps='$var'";
+                $result = mysqli_query($conn, $sql);
+                if(mysqli_num_rows($result) > 0){
+                    while( $row = mysqli_fetch_assoc($result)){
+                        $spentamt = $row['Spent_amount'];
+                        $totalamt = $row['Total_amount'];
+                        $category = $row['category'];
+                        if($totalamt!=0)
+                        $percentage = (float) $spentamt / (float) $totalamt * 100;
+                        else
+                            $percentage = 0;
+                        $percentage = round($percentage, 2);
+                        if($spentamt>$totalamt)
+                        {
+                            echo '<p style="color:red;">Budget_for_'.$category.'_exceeded '.$percentage.'% Used</p>';
+                        } else {
+                            echo  '<p style="color:green;"> '. $row['category'] .'<br>'. $percentage .'%<br>';
+                            echo '<progress class="progressbar" value="' . $spentamt . '" max="' . $totalamt . '"></progress>';
+                        }
+                    }
+                }
+                ?>
             </div>
             <div class="Reminders">
-                <span>Reminders</span>
+                <span></span>
             </div>
 
             <div class="add-transaction">
@@ -114,6 +147,7 @@ if ($conn->connect_error) {
                         <th bgcolor="#AEF28A">
                             <font face="Arial">Category</font>
                         </th>
+                        
                     </tr>
                     <?php include 'print-activities.php'; ?>
             </div>

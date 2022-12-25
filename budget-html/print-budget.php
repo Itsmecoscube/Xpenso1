@@ -3,14 +3,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'xpenso');
 $var = $_SESSION['user_name'];
 $query = "SELECT * FROM budget join keeps on BID = Budget_ID where Emailkeeps = '$var'";
 
-echo '<table border="5" cellspacing="2" cellpadding="2" width = "70%" margin:auto style="border:5px solid black; border-radius:10px;"> 
-      <tr height="60px"> 
-          <td bgcolor="#AEF28A" > <font face="Arial">Budget ID</font> </td> 
-          <td bgcolor="#AEF28A" width="20%"> <font face="Arial">Total Amount</font> </td> 
-          <td bgcolor="#AEF28A" width="22%"> <font face="Arial">Spent Amount</font> </td> 
-          <td bgcolor="#AEF28A"> <font face="Arial">Remaining Amount</font> </td> 
-          <td bgcolor="#AEF28A"> <font face="Arial">Category</font> </td> 
-      </tr>';
+echo '';
 
 if ($result = $mysqli->query($query)) {
     while ($row = $result->fetch_assoc()) {
@@ -31,10 +24,13 @@ if ($result = $mysqli->query($query)) {
             echo '<td bgcolor="#8EFF00">' . "Rs. " . $field3name . '</td> ';
 
         echo '<td>' . "Rs. " . $field4name . '</td> 
-              <td>' . $field5name . '</td> 
+              <td>' . $field5name . '</td> ';
+              
+              echo '<td><input type="checkbox" name="b_id[]" value='.$field1name.'</td>
           </tr>';
 
     }
+
     $result->free();
 }
 ?>
