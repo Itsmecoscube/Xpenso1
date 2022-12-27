@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php session_start(); 
+if(!isset($_SESSION['user_name']))
+header("Location:../login.php");
+?>
 <html>
 <title>Xpenso | Shopping List</title>
 <link rel="icon" href="../public/playground_assets/Logo.png" type="image/x-icon">
@@ -20,6 +23,23 @@
     .Progress p{
         font-size: 13;
     }
+    button{
+            cursor:pointer;
+        }
+    .menu-button1 {
+  width: 130px;
+  height: 40px;
+  background-color: #aeff83;
+  border-radius: 10px;
+  border-color: #f5f5fb;
+  transition: 0.3s;
+  align-items: center;
+}
+.menu-button1:hover{
+    background-color: greenyellow;
+    width:150px;
+    height:50px;
+}
 </style>
     <!---->
 
