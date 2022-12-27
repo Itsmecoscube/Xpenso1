@@ -23,6 +23,23 @@ header("Location:../login.php");
     .Progress p{
         font-size: 13;
     }
+    button{
+            cursor:pointer;
+        }
+    .menu-button1 {
+  width: 130px;
+  height: 40px;
+  background-color: #aeff83;
+  border-radius: 10px;
+  border-color: #f5f5fb;
+  transition: 0.3s;
+  align-items: center;
+}
+.menu-button1:hover{
+    background-color: greenyellow;
+    width:150px;
+    height:50px;
+}
 </style>
     <!---->
 

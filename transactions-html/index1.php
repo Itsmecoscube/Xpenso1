@@ -26,8 +26,52 @@ header("Location:../login.php");
         .Progress p {
             font-size: 13;
         }
+        button{
+            cursor:pointer;
+        }
+        .menu-button1 {
+  width: 130px;
+  height: 40px;
+  background-color: #aeff83;
+  border-radius: 10px;
+  border-color: #f5f5fb;
+  transition: 0.3s;
+  align-items: center;
+}
+.menu-button1:hover{
+    background-color: greenyellow;
+    width:140px;
+    height:45px;
+    
+}
+.add-transaction-button{
+  background-color: #4ad400;
+  width: 200px; 
+  height:40px;
+  font-weight: 700;
+  font-size: large;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  transition: 0.3s;
+}
+.add-transaction-button:hover{
+    background-color: darkgreen;
+    width:210px;
+    height:45px;
+}
+.delete-button:hover{
+    width:105px;
+    height:35px;
+    background-color:red;
+}
+.delete-button{
+    width: 100px;
+    height: 30px;
+    background-color:#ff4444;
+    border-radius: 10px;
+    border-color: #f5f5fb; 
+    transition:0.3s;
+}
     </style>
-    <!---->
 
 </head>
 
@@ -188,13 +232,6 @@ header("Location:../login.php");
                 </p>
 
                 <?php } ?>
-                <!-- <form action="deletetransaction.php" method="post">
-                            <input type="number" name="TID" placeholder="Enter the ID of Transaction to be deleted.."
-                                style="width:300px;border:solid red; border-radius:5px;height:30px;" required>
-                            <button type="submit" name="delete"
-                                style="width: 100px;height: 30px;background-color: red;border-radius: 10px;border-color: #f5f5fb;">Delete</button>
-                            <br /><br />
-                        </form> -->
             </div>
             <form action="code.php" method="post">
                 <div class="transactions-table">
@@ -222,8 +259,8 @@ header("Location:../login.php");
                             <th bgcolor="#AEF28A">
                                 <font face="Arial">Type</font>
                             </th>
-                            <th bgcolor="#AEF28A">
-                                <font face="Arial"><button type = "submit" name="transaction_delete_multiple_btn" style="width: 100px;height: 30px;background-color: red;border-radius: 10px;border-color: #f5f5fb;">Delete</button></font>
+                            <th bgcolor="#AEF28A" width="55%">
+                                <font face="Arial"><button type = "submit" class="delete-button" name="transaction_delete_multiple_btn" >Delete</button></font>
                             </th>
                         </tr>
                         <?php

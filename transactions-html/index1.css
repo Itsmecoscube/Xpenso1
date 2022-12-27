@@ -89,13 +89,7 @@
   top: 625px;
   position: absolute;
 }
-.menu-button1 {
-  width: 130px;
-  height: 40px;
-  background-color: #aeff83;
-  border-radius: 10px;
-  border-color: #f5f5fb;
-}
+
 .menutext {
   color: rgb(55, 56, 62);
   width: 82px;
@@ -224,16 +218,7 @@ bottom: -10px;
   height:40px;
   margin: auto;
 }
-.add-transaction-button{
-  background-color: #4ad400;
-  width: 200px; 
-  height:40px;
-  font-weight: 700;
-  font-size: large;
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  
-  align-self: center;
-}
+
 .transaction-table{
   position: relative;
 }

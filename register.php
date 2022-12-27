@@ -32,8 +32,8 @@
           <input type="number" placeholder="Enter Age" name="age" id="age" required>
           <hr>
           
-          <label for="photo"><b>Profile Photo</b></label><br>
-          <input type="file" name="photo" id="photo" required>
+          <label for="photo"><b>Profile Photo (Optional)</b></label><br>
+          <input type="file" name="photo" id="photo">
           <hr>
 
       
