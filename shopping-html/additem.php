@@ -3,7 +3,7 @@ $item_id = $_POST['item_id'];
 $mode = $_POST['mode-of-payment'];
 $type = $_POST['transaction-type'];
 
-$mysqli = new mysqli('localhost', 'root', '', 'xpenso');
+$mysqli = new mysqli('localhost', 'root', '', 'safespend-2');
 if ($mysqli->connect_error) {
     die('Connection Failed: ' . $mysqli->connect_error);
 } else {

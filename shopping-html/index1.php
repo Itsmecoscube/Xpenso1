@@ -55,7 +55,7 @@ header("Location:../login.php");
             <div class="profile">
 
                 <?php
-                $conn = new mysqli('localhost', 'root', '', 'xpenso');
+                $conn = new mysqli('localhost', 'root', '', 'safespend-2');
                 if ($conn->connect_error) {
                     die('Connection Failed: ' . $conn->connect_error);
                 } else {
@@ -257,7 +257,7 @@ header("Location:../login.php");
                         </th>
                     </tr>
                     <?php
-                    $mysqli = new mysqli('localhost', 'root', '', 'xpenso');
+                    $mysqli = new mysqli('localhost', 'root', '', 'safespend-2');
                     $var = $_SESSION['user_name'];
                     $query = "SELECT * FROM shopping natural join creates where Email = '$var'";
 

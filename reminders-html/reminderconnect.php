@@ -4,7 +4,7 @@ $amount = $_POST['amount'];
 $datetime = $_POST['datetime'];
 $description =$_POST['description'];
 $id = 1;
-$mysqli = new mysqli('localhost', 'root', '', 'xpenso');
+$mysqli = new mysqli('localhost', 'root', '', 'safespend-2');
 if ($mysqli->connect_error) {
     die('Connection Failed: ' . $mysqli->connect_error);
 } else {

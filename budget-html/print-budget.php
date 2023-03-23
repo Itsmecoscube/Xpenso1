@@ -1,5 +1,5 @@
 <?php
-$mysqli = new mysqli('localhost', 'root', '', 'xpenso');
+$mysqli = new mysqli('localhost', 'root', '', 'safespend-2');
 $var = $_SESSION['user_name'];
 $query = "SELECT * FROM budget join keeps on BID = Budget_ID where Emailkeeps = '$var'";
 

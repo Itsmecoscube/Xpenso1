@@ -397,7 +397,7 @@
         <div class="reminders-page-right">
             <div class="profile">
             <?php
-$conn = new mysqli('localhost', 'root', '', 'xpenso');
+$conn = new mysqli('localhost', 'root', '', 'safespend-2');
 if ($conn->connect_error) {
     die('Connection Failed: ' . $conn->connect_error);
 } else {

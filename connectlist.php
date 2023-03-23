@@ -9,7 +9,7 @@ $item_price = $_POST['item-price'];
 $quantity =$_POST['quantity'];
 $item_cat = $_POST['category'];
 
-$mysqli = new mysqli('localhost', 'root', '', 'xpenso');
+$mysqli = new mysqli('localhost', 'root', '', 'safespend-2');
 if ($mysqli->connect_error) {
     die('Connection Failed: ' . $mysqli->connect_error);
 } else {

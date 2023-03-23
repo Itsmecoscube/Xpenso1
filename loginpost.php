@@ -8,7 +8,7 @@ $unmae = "root";
 
 $password = "";
 
-$db_name = "xpenso";
+$db_name = "safespend-2";
 
 $conn = mysqli_connect($sname, $unmae, $password, $db_name);
 
@@ -69,7 +69,7 @@ if (isset($_POST['uname']) && isset($_POST['password'])) {
                 exit();
             }else{
 
-                header("Location: login.php?error=Incorect Email or password22");
+                header("Location: login.php?error=Incorect Password");
 
                 exit();
             }

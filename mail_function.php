@@ -17,7 +17,7 @@ require 'vendor/phpmailer/phpmailer/src/SMTP.php';
 		$mail->Password = "ovdngmavqafczicb";
 		$mail->Host     = "smtp.gmail.com";
 		$mail->Mailer   = "smtp";
-		$mail->setFrom("XpensoMail@gmail.com","XPENSO");
+		$mail->setFrom("XpensoMail@gmail.com",'safespend-2');
 		$mail->AddAddress($email);
 		$mail->Subject = "OTP to Login to Xpenso";
 		$mail->MsgHTML($message_body);

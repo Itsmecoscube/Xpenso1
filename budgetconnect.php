@@ -6,7 +6,7 @@ header("Location:../login.php");
 $amount = $_POST['amount'];
 $category = $_POST['category'];
 
-$mysqli = new mysqli('localhost', 'root', '', 'xpenso');
+$mysqli = new mysqli('localhost', 'root', '', 'safespend-2');
 if ($mysqli->connect_error) {
     die('Connection Failed: ' . $mysqli->connect_error);
 } else {

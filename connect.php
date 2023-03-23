@@ -8,7 +8,7 @@ $mode = $_POST['mode-of-payment'];
 $type = $_POST['transaction-type'];
 $category = $_POST['category'];
 
-$mysqli = new mysqli('localhost', 'root', '', 'xpenso');
+$mysqli = new mysqli('localhost', 'root', '', 'safespend-2');
 if ($mysqli->connect_error) {
     die('Connection Failed: ' . $mysqli->connect_error);
 } else {

@@ -1,6 +1,6 @@
 <?php
 session_start();
-$mysqli = new mysqli('localhost', 'root', '', 'xpenso');
+$mysqli = new mysqli('localhost', 'root', '', 'safespend-2');
 if (isset($_POST['shopping_delete_multiple_btn'])) {
     if (isset($_POST['shopping_delete_id'])) {
         $all_id = $_POST['shopping_delete_id'];

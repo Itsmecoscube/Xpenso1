@@ -2,7 +2,7 @@
 session_start();
 $success = "";
 $error_message = "";
-$conn = mysqli_connect("localhost", "root", "", "xpenso");
+$conn = mysqli_connect("localhost", "root", "", 'safespend-2');
 $count = 1;
 // generate OTP
 $otp = rand(100000, 999999);

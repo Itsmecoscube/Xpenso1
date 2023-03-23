@@ -8,7 +8,6 @@ $age = $_POST['age'];
 $stmt = "";
 $new_img_name = "";
 if(isset($_FILES['photo'])){
-    echo "Hello";
     $img_name = $_FILES['photo']['name'];
     $img_size = $_FILES['photo']['size'];
     $tmp_name = $_FILES['photo']['tmp_name'];
@@ -34,7 +33,7 @@ if(isset($_FILES['photo'])){
 }
 if ($new_img_name == "")
     $new_img_name = "default.png";
-$conn = new mysqli('localhost', 'root', '', 'xpenso');
+$conn = new mysqli('localhost', 'root', '', 'safespend-2');
 if ($conn->connect_error) {
     die('Connection Failed: ' . $conn->connect_error);
 } else {
